@@ -46,9 +46,11 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
@@ -138,6 +140,24 @@ public class MenuInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu7.setText("Contabilidad");
+        jMenu7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jMenuItem11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem11.setText("Plan de Cuentas");
+        jMenu7.add(jMenuItem11);
+
+        jMenuItem12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem12.setText("Registro de Asientos");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem12);
+
+        jMenuBar1.add(jMenu7);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -146,6 +166,10 @@ public class MenuInicial extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,9 +214,12 @@ public class MenuInicial extends javax.swing.JFrame {
     public javax.swing.JMenu jMenu4;
     public javax.swing.JMenu jMenu5;
     public javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     public javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jMenuItem10;
+    public javax.swing.JMenuItem jMenuItem11;
+    public javax.swing.JMenuItem jMenuItem12;
     public javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JMenuItem jMenuItem3;
     public javax.swing.JMenuItem jMenuItem4;

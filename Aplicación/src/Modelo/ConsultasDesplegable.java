@@ -347,8 +347,8 @@ public class ConsultasDesplegable extends Conexion {
         
         
        Conexion con=new Conexion();
-        con.setBaseUrl("world");
-        con.setNombreBase("world");
+        con.setBaseUrl("practico1");
+        con.setNombreBase("practico1");
         Connection conexion;
         conexion=con.getConnection();
         

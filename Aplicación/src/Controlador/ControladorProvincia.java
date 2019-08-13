@@ -41,7 +41,7 @@ public class ControladorProvincia implements ActionListener,MouseListener,KeyLis
         this.form1 = form1;
         this.modelo = modelo;
         this.provincia = provincia;
-         this.usuario=usuario;
+        this.usuario=usuario;
         this.modeloUsuario=modeloUsuario;
  
         form1.tablaProvincias.setModel(modelo.llenarTabla()); //lleno tabla al iniciar

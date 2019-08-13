@@ -9,20 +9,25 @@ import Controlador.ControladorProvincia;
 import Modelo.Actividad;
 import Modelo.Cliente;
 import Modelo.Conexion;
+import Modelo.ConsultasAsientos;
 import Modelo.ConsultasAuditoria;
 import Modelo.ConsultasBackup;
 import Modelo.ConsultasCliente;
 import Modelo.ConsultasDesplegable;
 import Modelo.ConsultasPerfiles;
+import Modelo.ConsultasPlanCuentas;
 import Modelo.ConsultasUsuario;
+import Modelo.Cuenta;
 import Modelo.Perfil;
 import Modelo.Permiso;
 import Modelo.Usuario;
 import Vista.Desplegable;
+import Vista.FormAsientos;
 import Vista.FormAuditoria;
 import Vista.FormBackup;
 import Vista.FormClientes;
 import Vista.FormPerfiles;
+import Vista.FormPlanCuentas;
 import Vista.FormSeguridadUsuario;
 import Vista.FormUsuarios;
 import Vista.LoginForm;
@@ -52,6 +57,9 @@ public class ControladorMenuInicial implements ActionListener {
         form1.jMenuItem8.addActionListener(this);
         form1.jMenuItem9.addActionListener(this);
         form1.jMenuItem10.addActionListener(this);
+        form1.jMenuItem11.addActionListener(this);
+        form1.jMenuItem12.addActionListener(this);
+        
         
     }
 
@@ -245,6 +253,31 @@ public class ControladorMenuInicial implements ActionListener {
               LoginForm menu=new LoginForm();
               ControladorLogin controlador = new ControladorLogin(menu,usuario,modelo);
               controlador.iniciar();
+          }
+          
+          if (e.getSource() == form1.jMenuItem11){
+             FormPlanCuentas formplancuentas = new FormPlanCuentas();
+             ConsultasPlanCuentas modelo = new ConsultasPlanCuentas();
+             ControladorPlanCuentas controlador = new ControladorPlanCuentas(formplancuentas,modelo,usuario);
+             
+             controlador.iniciar();
+             
+             this.form1.dispose();
+             
+              
+          }
+          
+          
+          if (e.getSource() == form1.jMenuItem12){
+             FormAsientos formasientos = new FormAsientos();
+             ConsultasAsientos modelo = new ConsultasAsientos();
+             ControladorAsientos controlador = new ControladorAsientos(formasientos,modelo,usuario);
+             
+             controlador.iniciar();
+             
+             this.form1.dispose();
+             
+              
           }
           
          

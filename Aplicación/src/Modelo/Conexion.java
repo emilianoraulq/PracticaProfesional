@@ -26,7 +26,7 @@ public class Conexion {
         //this.nombreBase="ppstp1";
         this.URL="jdbc:mysql://localhost:3306/" + nombreBase + "?autoreReconnet=true&useSSL=false";
         this.usuario="root";
-        this.contraseña="0858";
+        this.contraseña="cejasc27";
     }
 
     public static String getNombreBase() {
