@@ -50,6 +50,9 @@ public class FormPlanCuentas extends javax.swing.JFrame {
         campoDescripcion = new javax.swing.JTextField();
         etiquetaNroCuenta = new javax.swing.JLabel();
         campoNroCuenta = new javax.swing.JTextField();
+        etiquetaNivel = new javax.swing.JLabel();
+        campoNivel = new javax.swing.JTextField();
+        checkAjustable = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +145,12 @@ public class FormPlanCuentas extends javax.swing.JFrame {
 
         campoNroCuenta.setEnabled(false);
 
+        etiquetaNivel.setText("Nivel:");
+
+        campoNivel.setEnabled(false);
+
+        checkAjustable.setText("Ajustable x Inflacion");
+
         javax.swing.GroupLayout panelModificarCuentaLayout = new javax.swing.GroupLayout(panelModificarCuenta);
         panelModificarCuenta.setLayout(panelModificarCuentaLayout);
         panelModificarCuentaLayout.setHorizontalGroup(
@@ -149,19 +158,27 @@ public class FormPlanCuentas extends javax.swing.JFrame {
             .addGroup(panelModificarCuentaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(etiquetaCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(etiquetaDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(botonVolver)
-                    .addComponent(etiquetaNroCuenta))
-                .addGap(18, 18, 18)
-                .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboTituloCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonConfirmar)
-                    .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(campoCodigo)
-                        .addComponent(campoDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
-                    .addComponent(campoNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelModificarCuentaLayout.createSequentialGroup()
+                        .addComponent(etiquetaNivel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelModificarCuentaLayout.createSequentialGroup()
+                        .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(etiquetaCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(etiquetaDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonVolver)
+                            .addComponent(etiquetaNroCuenta))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboTituloCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonConfirmar)
+                            .addComponent(campoNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(checkAjustable)
+                                .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(campoCodigo)
+                                    .addComponent(campoDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         panelModificarCuentaLayout.setVerticalGroup(
@@ -181,11 +198,16 @@ public class FormPlanCuentas extends javax.swing.JFrame {
                     .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(comboTituloCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVolver)
-                    .addComponent(botonConfirmar))
-                .addGap(58, 58, 58))
+                    .addComponent(etiquetaNivel)
+                    .addComponent(campoNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkAjustable))
+                .addGap(42, 42, 42)
+                .addGroup(panelModificarCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonConfirmar)
+                    .addComponent(botonVolver))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,13 +218,13 @@ public class FormPlanCuentas extends javax.swing.JFrame {
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(panelModificarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
                         .addComponent(botonDesactivarCuenta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                         .addComponent(botonEliminar)
                         .addGap(123, 123, 123)
                         .addComponent(botonListar)
@@ -217,12 +239,7 @@ public class FormPlanCuentas extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelModificarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)))
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -234,8 +251,12 @@ public class FormPlanCuentas extends javax.swing.JFrame {
                         .addComponent(botonCuentasInactivas)
                         .addGap(0, 25, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonSalir)
                         .addGap(41, 41, 41))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(panelModificarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(170, 170, 170))
         );
 
         pack();
@@ -290,10 +311,13 @@ public class FormPlanCuentas extends javax.swing.JFrame {
     public javax.swing.JTextField campoBuscar;
     public javax.swing.JTextField campoCodigo;
     public javax.swing.JTextField campoDescripcion;
+    public javax.swing.JTextField campoNivel;
     public javax.swing.JTextField campoNroCuenta;
+    public javax.swing.JCheckBox checkAjustable;
     public javax.swing.JComboBox<String> comboTituloCuenta;
     public javax.swing.JLabel etiquetaCodigo;
     public javax.swing.JLabel etiquetaDescripcion;
+    public javax.swing.JLabel etiquetaNivel;
     public javax.swing.JLabel etiquetaNroCuenta;
     public javax.swing.JLabel etiquetaTitulo;
     private javax.swing.JScrollPane jScrollPane1;

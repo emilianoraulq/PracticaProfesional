@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Vista/FormAsientos.java</file>
-            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Controlador/ControladorAsientos.java</file>
-            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Modelo/ConsultasAsientos.java</file>
-            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Modelo/ConsultasCliente.java</file>
-            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Modelo/ConsultasAuditoria.java</file>
-            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Modelo/Renglon.java</file>
+            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Vista/NuevaCuenta.java</file>
+            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Controlador/ControladorNuevaCuenta.java</file>
         </group>
     </open-files>
 </project-private>

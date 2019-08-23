@@ -31,15 +31,9 @@ public class FormAsientos extends javax.swing.JFrame {
         grupoTipoAsiento = new javax.swing.ButtonGroup();
         panelPrincipal = new javax.swing.JPanel();
         etiquetaTitulo = new javax.swing.JLabel();
-        etiquetaTotalDebe = new javax.swing.JLabel();
-        etiquetaTotalHaber = new javax.swing.JLabel();
-        campoTotalDebe = new javax.swing.JTextField();
-        campoTotalHaber = new javax.swing.JTextField();
-        etiquetaDiferencia = new javax.swing.JLabel();
-        campoDiferencia = new javax.swing.JTextField();
         botonRetomarAsiento = new javax.swing.JButton();
         botonListar = new javax.swing.JButton();
-        botonCargarAsiento = new javax.swing.JButton();
+        botonNuevoAsiento = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         campoDesde = new javax.swing.JTextField();
         etiquetaDesde = new javax.swing.JLabel();
@@ -51,12 +45,9 @@ public class FormAsientos extends javax.swing.JFrame {
         etiquetaFechaContable = new javax.swing.JLabel();
         etiquetaNroAsiento = new javax.swing.JLabel();
         campoAsiento = new javax.swing.JTextField();
-        etiquetaTipoAsiento = new javax.swing.JLabel();
-        opcionNormal = new javax.swing.JRadioButton();
-        opcionApertura = new javax.swing.JRadioButton();
-        opcionCierre = new javax.swing.JRadioButton();
         checkInflacion = new javax.swing.JCheckBox();
         botonIniciarCarga = new javax.swing.JButton();
+        botonVolverAtras = new javax.swing.JButton();
         panelRenglones = new javax.swing.JPanel();
         etiquetaNroRenglon = new javax.swing.JLabel();
         campoNroRenglon = new javax.swing.JTextField();
@@ -83,28 +74,36 @@ public class FormAsientos extends javax.swing.JFrame {
         botonOK = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaRenglones = new javax.swing.JTable();
-        botonNuevoRenglon = new javax.swing.JButton();
         botonModificarRenglon = new javax.swing.JButton();
         botonEliminarRenglon = new javax.swing.JButton();
+        etiquetaTotalDebe = new javax.swing.JLabel();
+        campoTotalDebe = new javax.swing.JTextField();
+        etiquetaTotalHaber = new javax.swing.JLabel();
+        campoTotalHaber = new javax.swing.JTextField();
+        etiquetaDiferencia = new javax.swing.JLabel();
+        campoDiferencia = new javax.swing.JTextField();
         botonGrabar = new javax.swing.JButton();
+        botonVolverAlInicio = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        etiquetaIDAsiento = new javax.swing.JLabel();
+        campoRetomarAsiento = new javax.swing.JTextField();
+        panelTipoAsiento = new javax.swing.JPanel();
+        etiquetaTipoAsiento = new javax.swing.JLabel();
+        opcionApertura = new javax.swing.JRadioButton();
+        opcionNormal = new javax.swing.JRadioButton();
+        opcionCierre = new javax.swing.JRadioButton();
         jSeparator2 = new javax.swing.JSeparator();
+        botonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         etiquetaTitulo.setText("Carga de Asientos");
 
-        etiquetaTotalDebe.setText("Total Debe");
-
-        etiquetaTotalHaber.setText("Total Haber");
-
-        etiquetaDiferencia.setText("Diferencia");
-
         botonRetomarAsiento.setText("Retomar Asiento");
 
         botonListar.setText("Listar");
 
-        botonCargarAsiento.setText("Cargar Asiento");
+        botonNuevoAsiento.setText("Nuevo Asiento");
 
         etiquetaDesde.setText("Desde:");
 
@@ -116,20 +115,13 @@ public class FormAsientos extends javax.swing.JFrame {
 
         etiquetaNroAsiento.setText("Nro de Asiento");
 
-        etiquetaTipoAsiento.setText("Tipo de Asiento:");
-
-        grupoTipoAsiento.add(opcionNormal);
-        opcionNormal.setText("Normal");
-
-        grupoTipoAsiento.add(opcionApertura);
-        opcionApertura.setText("Apertura");
-
-        grupoTipoAsiento.add(opcionCierre);
-        opcionCierre.setText("Cierre");
+        campoAsiento.setEnabled(false);
 
         checkInflacion.setText("Ajustable por Inflación");
 
         botonIniciarCarga.setText("Iniciar Carga");
+
+        botonVolverAtras.setText("Volver Atras");
 
         javax.swing.GroupLayout panelAsientosLayout = new javax.swing.GroupLayout(panelAsientos);
         panelAsientos.setLayout(panelAsientosLayout);
@@ -138,31 +130,26 @@ public class FormAsientos extends javax.swing.JFrame {
             .addGroup(panelAsientosLayout.createSequentialGroup()
                 .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAsientosLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etiquetaFechaContable)
-                            .addComponent(fechaContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addComponent(campoAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(opcionApertura))
-                    .addGroup(panelAsientosLayout.createSequentialGroup()
                         .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelAsientosLayout.createSequentialGroup()
                                 .addGap(138, 138, 138)
                                 .addComponent(etiquetaNroAsiento))
                             .addGroup(panelAsientosLayout.createSequentialGroup()
                                 .addGap(46, 46, 46)
-                                .addComponent(checkInflacion)))
-                        .addGap(45, 45, 45)
-                        .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(opcionNormal)
-                            .addComponent(etiquetaTipoAsiento)
+                                .addComponent(checkInflacion))
                             .addGroup(panelAsientosLayout.createSequentialGroup()
-                                .addComponent(opcionCierre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                                .addComponent(botonIniciarCarga)))))
-                .addGap(100, 100, 100))
+                                .addGap(68, 68, 68)
+                                .addComponent(botonVolverAtras)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonIniciarCarga))
+                    .addGroup(panelAsientosLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etiquetaFechaContable)
+                            .addComponent(fechaContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addComponent(campoAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelAsientosLayout.setVerticalGroup(
             panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,25 +157,24 @@ public class FormAsientos extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaFechaContable)
-                    .addComponent(etiquetaNroAsiento)
-                    .addComponent(etiquetaTipoAsiento))
+                    .addComponent(etiquetaNroAsiento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fechaContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelAsientosLayout.createSequentialGroup()
-                        .addComponent(opcionApertura)
-                        .addGap(5, 5, 5)
-                        .addComponent(opcionNormal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(opcionCierre)
-                            .addComponent(checkInflacion)
-                            .addComponent(botonIniciarCarga))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGap(55, 55, 55)
+                        .addComponent(checkInflacion)))
+                .addGap(18, 18, 18)
+                .addGroup(panelAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonVolverAtras)
+                    .addComponent(botonIniciarCarga))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         etiquetaNroRenglon.setText("Nro de Renglon");
+
+        campoNroRenglon.setEnabled(false);
 
         etiquetaNroCuenta.setText("Nro de Cuenta");
 
@@ -203,6 +189,7 @@ public class FormAsientos extends javax.swing.JFrame {
         etiquetaComprobante.setText("Comprobante:");
 
         grupoDebeHaber.add(opcionDebe);
+        opcionDebe.setSelected(true);
         opcionDebe.setText("Debe");
 
         grupoDebeHaber.add(opcionHaber);
@@ -212,10 +199,17 @@ public class FormAsientos extends javax.swing.JFrame {
 
         etiquetaNombreCuenta.setText("Nombre de la Cuenta:");
 
+        campoNombreCuenta.setEnabled(false);
+
         etiquetaLeyenda.setText("Leyenda:");
 
         botonOK.setText("Ok");
 
+        tablaRenglones = new javax.swing.JTable() {
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tablaRenglones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -229,11 +223,22 @@ public class FormAsientos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaRenglones);
 
-        botonNuevoRenglon.setText("Nuevo Renglon");
-
         botonModificarRenglon.setText("Modificar Renglon");
 
         botonEliminarRenglon.setText("Eliminar Renglon");
+
+        etiquetaTotalDebe.setText("Total Debe");
+
+        etiquetaTotalHaber.setText("Total Haber");
+
+        etiquetaDiferencia.setText("Diferencia");
+
+        botonGrabar.setText("Grabar");
+
+        botonVolverAlInicio.setText("Volver al Inicio");
+
+        botonCancelar.setText("Cancelar");
+        botonCancelar.setEnabled(false);
 
         javax.swing.GroupLayout panelRenglonesLayout = new javax.swing.GroupLayout(panelRenglones);
         panelRenglones.setLayout(panelRenglonesLayout);
@@ -280,9 +285,7 @@ public class FormAsientos extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(campoSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonNuevoRenglon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(botonModificarRenglon, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(botonModificarRenglon))
                             .addGroup(panelRenglonesLayout.createSequentialGroup()
                                 .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(campoNombreCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,37 +302,53 @@ public class FormAsientos extends javax.swing.JFrame {
                                 .addComponent(etiquetaFechaVencimiento))
                             .addComponent(etiquetaLeyenda)
                             .addGroup(panelRenglonesLayout.createSequentialGroup()
+                                .addComponent(etiquetaTotalDebe)
+                                .addGap(18, 18, 18)
+                                .addComponent(campoTotalDebe, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(etiquetaTotalHaber)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoTotalHaber, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)
+                                .addComponent(etiquetaDiferencia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoDiferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRenglonesLayout.createSequentialGroup()
                                 .addComponent(campoLeyenda, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(botonOK, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(botonOK, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonCancelar)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRenglonesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonVolverAlInicio)
+                .addGap(34, 34, 34)
+                .addComponent(botonGrabar)
+                .addGap(66, 66, 66))
         );
         panelRenglonesLayout.setVerticalGroup(
             panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRenglonesLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaNroRenglon)
+                    .addComponent(etiquetaNroCuenta)
+                    .addComponent(etiquetaFechaVencimiento)
+                    .addComponent(etiquetaFechaOperacion)
+                    .addComponent(etiquetaSucursal)
+                    .addComponent(etiquetaSeccion))
+                .addGap(9, 9, 9)
                 .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(etiquetaNroRenglon)
-                        .addComponent(etiquetaNroCuenta)
-                        .addComponent(etiquetaFechaVencimiento)
-                        .addComponent(etiquetaFechaOperacion)
-                        .addComponent(etiquetaSucursal)
-                        .addComponent(etiquetaSeccion))
-                    .addComponent(botonNuevoRenglon))
-                .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRenglonesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(campoNroRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campoNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(fechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fechaOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(campoSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campoSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(campoNroRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRenglonesLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(botonModificarRenglon)))
@@ -360,10 +379,63 @@ public class FormAsientos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoLeyenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonOK))
+                    .addComponent(botonOK)
+                    .addComponent(botonCancelar))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaTotalDebe)
+                    .addComponent(campoTotalDebe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etiquetaTotalHaber)
+                    .addComponent(campoTotalHaber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etiquetaDiferencia)
+                    .addComponent(campoDiferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(panelRenglonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonGrabar)
+                    .addComponent(botonVolverAlInicio))
+                .addContainerGap())
+        );
+
+        etiquetaIDAsiento.setText("ID:");
+
+        etiquetaTipoAsiento.setText("Tipo de Asiento:");
+
+        grupoTipoAsiento.add(opcionApertura);
+        opcionApertura.setText("Apertura");
+
+        grupoTipoAsiento.add(opcionNormal);
+        opcionNormal.setText("Normal");
+
+        grupoTipoAsiento.add(opcionCierre);
+        opcionCierre.setText("Cierre");
+
+        javax.swing.GroupLayout panelTipoAsientoLayout = new javax.swing.GroupLayout(panelTipoAsiento);
+        panelTipoAsiento.setLayout(panelTipoAsientoLayout);
+        panelTipoAsientoLayout.setHorizontalGroup(
+            panelTipoAsientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTipoAsientoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelTipoAsientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(opcionCierre)
+                    .addComponent(opcionNormal)
+                    .addComponent(etiquetaTipoAsiento)
+                    .addComponent(opcionApertura))
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        panelTipoAsientoLayout.setVerticalGroup(
+            panelTipoAsientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTipoAsientoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(etiquetaTipoAsiento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(opcionApertura)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(opcionNormal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(opcionCierre)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
@@ -381,45 +453,38 @@ public class FormAsientos extends javax.swing.JFrame {
                                 .addGap(385, 385, 385)
                                 .addComponent(etiquetaTitulo))
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(252, 252, 252)
-                                .addComponent(etiquetaTotalDebe)
-                                .addGap(18, 18, 18)
-                                .addComponent(campoTotalDebe, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(etiquetaTotalHaber)
-                                .addGap(26, 26, 26)
-                                .addComponent(campoTotalHaber, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(etiquetaDiferencia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoDiferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(etiquetaListar)
+                                            .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(botonListar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(etiquetaDesde)
+                                                        .addComponent(etiquetaHasta))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(campoDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(campoHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(76, 76, 76))
                                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                                         .addGap(35, 35, 35)
                                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(botonRetomarAsiento)
-                                            .addComponent(botonCargarAsiento)))
-                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(etiquetaListar))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(botonNuevoAsiento)
                                             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                                .addComponent(etiquetaDesde)
-                                                .addGap(17, 17, 17))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(etiquetaHasta)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(campoDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                            .addComponent(campoHasta)))
-                                    .addComponent(botonListar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(68, 68, 68)
+                                                .addComponent(etiquetaIDAsiento)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(campoRetomarAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(68, 68, 68)))
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(panelRenglones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(panelAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(panelAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(panelTipoAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 135, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -427,55 +492,45 @@ public class FormAsientos extends javax.swing.JFrame {
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(botonRetomarAsiento)
-                        .addGap(80, 80, 80))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(etiquetaTitulo)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(botonCargarAsiento))
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(panelAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)))
+                .addComponent(etiquetaTitulo)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(etiquetaListar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(campoDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(etiquetaDesde)))
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(184, 184, 184)
-                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(etiquetaHasta)
-                                    .addComponent(campoHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(33, 33, 33)
-                        .addComponent(botonListar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(panelRenglones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52)
+                        .addComponent(botonNuevoAsiento)
+                        .addGap(52, 52, 52)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaIDAsiento)
+                            .addComponent(campoRetomarAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonRetomarAsiento))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelTipoAsiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelAsientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoTotalDebe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiquetaTotalDebe)
-                    .addComponent(etiquetaTotalHaber)
-                    .addComponent(campoTotalHaber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiquetaDiferencia)
-                    .addComponent(campoDiferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(etiquetaListar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaDesde)
+                            .addComponent(campoDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaHasta)
+                            .addComponent(campoHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(botonListar)
+                        .addGap(350, 350, 350))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                        .addComponent(panelRenglones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
-        botonGrabar.setText("Grabar");
-
-        botonCancelar.setText("Cancelar");
+        botonSalir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -483,16 +538,16 @@ public class FormAsientos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonCancelar)
-                        .addGap(68, 68, 68)
-                        .addComponent(botonGrabar)))
-                .addGap(168, 168, 168))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(168, 168, 168))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(209, 209, 209))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,10 +557,8 @@ public class FormAsientos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonGrabar)
-                    .addComponent(botonCancelar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(botonSalir)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -548,15 +601,17 @@ public class FormAsientos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton botonCancelar;
-    public javax.swing.JButton botonCargarAsiento;
     public javax.swing.JButton botonEliminarRenglon;
     public javax.swing.JButton botonGrabar;
     public javax.swing.JButton botonIniciarCarga;
     public javax.swing.JButton botonListar;
     public javax.swing.JButton botonModificarRenglon;
-    public javax.swing.JButton botonNuevoRenglon;
+    public javax.swing.JButton botonNuevoAsiento;
     public javax.swing.JButton botonOK;
     public javax.swing.JButton botonRetomarAsiento;
+    public javax.swing.JButton botonSalir;
+    public javax.swing.JButton botonVolverAlInicio;
+    public javax.swing.JButton botonVolverAtras;
     public javax.swing.JTextField campoAsiento;
     public javax.swing.JTextField campoComprobante;
     public javax.swing.JTextField campoDesde;
@@ -564,11 +619,12 @@ public class FormAsientos extends javax.swing.JFrame {
     public javax.swing.JTextField campoHasta;
     public javax.swing.JTextField campoImporte;
     public javax.swing.JTextField campoLeyenda;
-    public javax.swing.JTextField campoNombreCuenta;
-    public javax.swing.JTextField campoNroCuenta;
+    public static javax.swing.JTextField campoNombreCuenta;
+    public static javax.swing.JTextField campoNroCuenta;
     public javax.swing.JTextField campoNroRenglon;
-    public javax.swing.JTextField campoSeccion;
-    public javax.swing.JTextField campoSucursal;
+    public javax.swing.JTextField campoRetomarAsiento;
+    public static javax.swing.JTextField campoSeccion;
+    public static javax.swing.JTextField campoSucursal;
     public javax.swing.JTextField campoTotalDebe;
     public javax.swing.JTextField campoTotalHaber;
     public javax.swing.JCheckBox checkInflacion;
@@ -579,6 +635,7 @@ public class FormAsientos extends javax.swing.JFrame {
     public javax.swing.JLabel etiquetaFechaOperacion;
     public javax.swing.JLabel etiquetaFechaVencimiento;
     public javax.swing.JLabel etiquetaHasta;
+    public javax.swing.JLabel etiquetaIDAsiento;
     public javax.swing.JLabel etiquetaImporte;
     public javax.swing.JLabel etiquetaLeyenda;
     public javax.swing.JLabel etiquetaListar;
@@ -608,6 +665,7 @@ public class FormAsientos extends javax.swing.JFrame {
     public javax.swing.JPanel panelAsientos;
     public javax.swing.JPanel panelPrincipal;
     public javax.swing.JPanel panelRenglones;
+    public javax.swing.JPanel panelTipoAsiento;
     public javax.swing.JTable tablaRenglones;
     // End of variables declaration//GEN-END:variables
 }

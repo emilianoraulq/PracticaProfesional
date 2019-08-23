@@ -4,6 +4,7 @@ package Controlador;
 import Modelo.Cliente;
 import Modelo.ConsultasDesplegable;
 import Vista.Desplegable;
+import Vista.FormAsientos;
 import Vista.FormClientes;
 import static Vista.FormClientes.campoProvincia;
 import Vista.FormPerfiles;
@@ -56,6 +57,22 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
              
          }
          
+         if (tabla == 6) {
+             form1.tablaDesplegable.setModel(modelo.llenarTablaPlanDeCuentas());
+             form1.etiquetaBusqueda.setText("Cuenta:");
+         }
+         
+         if (tabla == 7) {
+             form1.tablaDesplegable.setModel(modelo.llenarTablaSecciones());
+             form1.etiquetaBusqueda.setText("Seccion:");
+         }
+         
+         if (tabla == 8) {
+             form1.tablaDesplegable.setModel(modelo.llenarTablaSucursales());
+             form1.etiquetaBusqueda.setText("Sucursal:");
+         }
+         
+         
          
        
         
@@ -106,6 +123,24 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
              modeloTabla = modelo.buscarEmpresas(form1.jTextField1.getText());
              form1.tablaDesplegable.setModel(modeloTabla);
             }
+            
+            if (tabla == 6) {
+             DefaultTableModel modeloTabla = new DefaultTableModel();
+             modeloTabla = modelo.buscarCuenta(form1.jTextField1.getText());
+             form1.tablaDesplegable.setModel(modeloTabla);  
+            }
+            
+             if (tabla == 7) {
+             DefaultTableModel modeloTabla = new DefaultTableModel();
+             modeloTabla = modelo.buscarSeccion(form1.jTextField1.getText());
+             form1.tablaDesplegable.setModel(modeloTabla);  
+            }
+             
+              if (tabla == 8) {
+             DefaultTableModel modeloTabla = new DefaultTableModel();
+             modeloTabla = modelo.buscarSucursal(form1.jTextField1.getText());
+             form1.tablaDesplegable.setModel(modeloTabla);  
+            }
         
         }
         
@@ -142,12 +177,28 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
               LoginForm.txtEmpresa.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
+              
+              if (tabla == 6) {
+              FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              }
+              
+              if (tabla == 7) {
+              FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              }
+              
+              if (tabla == 8) {
+              FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              }
+              
+              
              
               this.form1.dispose();
               
-               // if ("Provincias".equals(jLabel2.getText())) {
-              //  Cliente.campoProvincia.setText(provincia);;
-              //  }
+              
               
               }
           
@@ -197,6 +248,25 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
               LoginForm.txtEmpresa.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
                 }
+                
+                if (tabla == 6) {
+              FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              }
+                
+             
+              if (tabla == 7) {
+              FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              }
+              
+              if (tabla == 8) {
+              FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              }
+                
+                
                
            }
             form1.dispose();
@@ -256,6 +326,23 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
                  FormUsuarios.txtIdPerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
                  FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
                  }
+                 
+                 if (tabla == 6) {
+                    FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                    FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString());
+                    //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                 }
+                 
+                 
+                if (tabla == 7) {
+                FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+                //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                }
+
+                if (tabla == 8) {
+                FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+                //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                }
                 
                
            }

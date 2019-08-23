@@ -557,6 +557,58 @@ public class ConsultasPlanCuentas extends Conexion {
         }
      }
     
+    //DEVUELVE LA CUENTA CON EL ID QUE LE PASAMOS POR PARAMETRO
+    public Cuenta getCuenta(int idCuenta){
+        
+        
+ 
+        Connection conexion = getConnection();
+         Cuenta cuenta = new Cuenta();
+       
+        try{
+        
+        ps = conexion.prepareStatement("select * from plandecuentas where nrocuenta = ?");
+        ps.setInt(1,idCuenta);
+        rs = ps.executeQuery();
+       
+        
+         while (rs.next()){
+            Object fila [] = new Object[7]; // guardo un registro
+            
+            for (int i = 0;i < 7; i++) {
+                fila[i] = rs.getObject(i+1);
+               // System.out.println(rs.getObject(5));
+                
+            }
+            
+            
+           cuenta.setCodigo((String) fila[0]);
+           cuenta.setNroCuenta((int) fila[1]);
+           cuenta.setDescripcion((String) fila[2]);
+           cuenta.setTipo((int) fila[3]);
+           cuenta.setNivel((int) fila[4]);
+           cuenta.setInflacion((int) fila[5]);
+           cuenta.setActivo((int) fila[6]);
+            
+            
+         }
+         
+            
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+    
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+      return cuenta;  
+    }
+    
     
     
     

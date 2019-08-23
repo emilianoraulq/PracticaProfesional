@@ -213,6 +213,31 @@ public class ControladorPlanCuentas implements ActionListener, KeyListener{
             else{
                 form1.panelModificarCuenta.setVisible(true);
                 
+                Cuenta cuenta = new Cuenta();
+                cuenta = modelo.getCuenta(Integer.parseInt(form1.tablaCuentas.getValueAt(fila, 3).toString()));
+                
+                form1.campoCodigo.setText(cuenta.getCodigo());
+                form1.campoDescripcion.setText(cuenta.getDescripcion());
+                form1.campoNivel.setText(String.valueOf(cuenta.getNivel()));
+                form1.campoNroCuenta.setText(String.valueOf(cuenta.getNroCuenta()));
+                
+                if (cuenta.getInflacion() == 1) {
+                    form1.checkAjustable.setSelected(true);
+                }
+                if (cuenta.getInflacion() == 0) {
+                    form1.checkAjustable.setSelected(false);
+                }
+                
+                if (cuenta.getTipo() == 1) {
+                    form1.comboTituloCuenta.setSelectedIndex(1);
+                }
+                
+                if (cuenta.getTipo() == 0) {
+                    form1.comboTituloCuenta.setSelectedIndex(0);
+                }
+                
+                
+               /* 
                 form1.campoCodigo.setText(form1.tablaCuentas.getValueAt(fila, 0).toString());
                 form1.campoDescripcion.setText(form1.tablaCuentas.getValueAt(fila, 1).toString());
                 
@@ -226,7 +251,7 @@ public class ControladorPlanCuentas implements ActionListener, KeyListener{
                 }
                  
                 form1.campoNroCuenta.setText(form1.tablaCuentas.getValueAt(fila, 3).toString());
-                
+                */
                 
             }
              
