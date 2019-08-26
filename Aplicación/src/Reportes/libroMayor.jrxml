@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1000" pageHeight="842" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aca0ee8f-9499-4071-9603-26c53b866bd2">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="442"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Repositories\\PracticaProfesional\\PracticaProfesional\\Aplicación\\src\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_desde" class="java.sql.Timestamp"/>
+	<parameter name="fecha_hasta" class="java.sql.Timestamp"/>
+	<queryString>
+		<![CDATA[select * from plandecuentas order by codigo]]>
+	</queryString>
+	<field name="codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nrocuenta" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="inflacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="activo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="48" width="100" height="20" uuid="5ef8e74b-a685-491e-b606-80185e4db380"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NºCuenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="48" width="113" height="20" uuid="1d7a6874-13d7-4fab-9fb2-30e77820449b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nombre de la cuenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="0" width="156" height="24" uuid="13e23fb6-d419-479f-9896-78197cc1bf97"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Mayores de Cuentas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="24" width="26" height="20" uuid="d443b2dd-3d81-4ef0-9299-18e4be16c92a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Desde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="487" y="24" width="24" height="20" uuid="97243832-4e3f-458b-a565-167d2cd9319b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Hasta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="425" y="24" width="62" height="20" uuid="9483d2e3-e52c-47b7-8b5d-1e4e270f4aba"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_desde}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="24" width="68" height="20" uuid="8f5f05b2-4936-48ac-926e-3ca100b6dcdc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_hasta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="113" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="941" height="20" backcolor="#CCCCCC" uuid="771520d2-f461-408f-8d64-9d1424f72f12"/>
+			</frame>
+			<textField>
+				<reportElement x="0" y="0" width="82" height="20" uuid="6910343a-e68a-43bc-a31b-9fbe9832ec9b"/>
+				<textFieldExpression><![CDATA[$F{nrocuenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="100" height="20" uuid="a2fe8638-92eb-421e-86d1-675fe8bb060b"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="17" y="48" width="42" height="10" uuid="13034c9b-bda4-4be3-8b72-d9962571c3a9"/>
+				<subreportParameter name="nrocuentaRenglon">
+					<subreportParameterExpression><![CDATA[$F{nrocuenta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_desde">
+					<subreportParameterExpression><![CDATA[$P{fecha_desde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_hasta">
+					<subreportParameterExpression><![CDATA[$P{fecha_hasta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "libroMayorSub1.jasper"]]></subreportExpression>
+			</subreport>
+			<frame>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="525" y="69" width="323" height="21" backcolor="#CCCCCC" uuid="adb6c617-7984-47d0-86f7-7f7524d110e7"/>
+			</frame>
+			<subreport>
+				<reportElement positionType="FixRelativeToBottom" x="628" y="58" width="39" height="31" uuid="fd8ae6ae-e5b0-4a65-b973-b50d1708b47c"/>
+				<subreportParameter name="nrocuentaRenglon">
+					<subreportParameterExpression><![CDATA[$F{nrocuenta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_desde">
+					<subreportParameterExpression><![CDATA[$P{fecha_desde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_hasta">
+					<subreportParameterExpression><![CDATA[$P{fecha_hasta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "libroMayorSub2.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="525" y="69" width="79" height="20" uuid="7839f457-27cd-42e2-8498-7f6d506a179a"/>
+				<text><![CDATA[Total del periodo]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

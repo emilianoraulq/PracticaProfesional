@@ -657,7 +657,7 @@ public class ConsultasAuditoria extends Conexion{
         }
         
         //abre el reporte automaticamente
-        String file = new String("C:\\Users\\erqui\\Desktop\\PracticaProfesional\\Prueba1\\AuditoriaProvincias.xlsx"); 
+        String file = new String("C:\\Users\\Schefer\\Desktop\\pruebagit\\PracticaProfesional\\Aplicación\\AuditoriaProvincias.xlsx"); 
         
         try{ 
         //definiendo la ruta en la propiedad file
@@ -781,7 +781,7 @@ public class ConsultasAuditoria extends Conexion{
         }
         
         //abre el reporte automaticamente
-        String file = new String("C:\\Users\\erqui\\Desktop\\PracticaProfesional\\Prueba1\\AuditoriaClientes.xlsx"); 
+        String file = new String("C:\\Users\\Schefer\\Desktop\\pruebagit\\PracticaProfesional\\Aplicación\\AuditoriaClientes.xlsx"); 
        
         try{ 
         //definiendo la ruta en la propiedad file
@@ -889,7 +889,7 @@ public class ConsultasAuditoria extends Conexion{
         }
         
         //abre el reporte automaticamente
-        String file = new String("C:\\Users\\erqui\\Desktop\\PracticaProfesional\\Prueba1\\AuditoriaUsuarios.xlsx"); 
+        String file = new String("C:\\Users\\Schefer\\Desktop\\pruebagit\\PracticaProfesional\\Aplicación\\AuditoriaUsuarios.xlsx"); 
         
         try{ 
         //definiendo la ruta en la propiedad file

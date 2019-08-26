@@ -3,7 +3,9 @@ package Controlador;
 
 import Modelo.Cliente;
 import Modelo.ConsultasDesplegable;
+import Modelo.Cuenta;
 import Vista.Desplegable;
+import Vista.FormAsientos;
 import Vista.FormClientes;
 import static Vista.FormClientes.campoProvincia;
 import Vista.FormPerfiles;
@@ -56,6 +58,22 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
              
          }
          
+         if (tabla == 6) {
+             form1.tablaDesplegable.setModel(modelo.llenarTablaPlanDeCuentas());
+             form1.etiquetaBusqueda.setText("Cuenta:");
+         }
+         
+         if (tabla == 7) {
+             form1.tablaDesplegable.setModel(modelo.llenarTablaSecciones());
+             form1.etiquetaBusqueda.setText("Seccion:");
+         }
+         
+         if (tabla == 8) {
+             form1.tablaDesplegable.setModel(modelo.llenarTablaSucursales());
+             form1.etiquetaBusqueda.setText("Sucursal:");
+         }
+         
+         
          
        
         
@@ -106,6 +124,24 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
              modeloTabla = modelo.buscarEmpresas(form1.jTextField1.getText());
              form1.tablaDesplegable.setModel(modeloTabla);
             }
+            
+            if (tabla == 6) {
+             DefaultTableModel modeloTabla = new DefaultTableModel();
+             modeloTabla = modelo.buscarCuenta(form1.jTextField1.getText());
+             form1.tablaDesplegable.setModel(modeloTabla);  
+            }
+            
+             if (tabla == 7) {
+             DefaultTableModel modeloTabla = new DefaultTableModel();
+             modeloTabla = modelo.buscarSeccion(form1.jTextField1.getText());
+             form1.tablaDesplegable.setModel(modeloTabla);  
+            }
+             
+              if (tabla == 8) {
+             DefaultTableModel modeloTabla = new DefaultTableModel();
+             modeloTabla = modelo.buscarSucursal(form1.jTextField1.getText());
+             form1.tablaDesplegable.setModel(modeloTabla);  
+            }
         
         }
         
@@ -121,33 +157,63 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
               if (tabla == 1) {
               FormClientes.campoProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               FormClientes.campoNombreProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
               }
               
               if (tabla == 2) {
               FormUsuarios.txtIdPerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
               }
               
               if (tabla == 3) {
               FormPerfiles.txtIdPerfilPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
               }
               
               if (tabla == 4) {
               FormPerfiles.txtIdActividadPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
               }
               
               if (tabla == 5) {
               LoginForm.txtEmpresa.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-              }
-             
               this.form1.dispose();
+              }
               
-               // if ("Provincias".equals(jLabel2.getText())) {
-              //  Cliente.campoProvincia.setText(provincia);;
-              //  }
+              if (tabla == 6) {
+                int idCuenta = Integer.parseInt(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                //System.out.println(idCuenta);
+                Cuenta cuenta = new Cuenta();
+                cuenta = modelo.getCuenta(idCuenta);
+                if (cuenta.getTipo() == 0) {
+                   JOptionPane.showMessageDialog(null, "Por favor seleccione una cuenta IMPUTABLE");  
+                }
+                else{              
+                 FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                 FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString()); 
+                 this.form1.dispose();
+                }
+        
+              }
+              
+              if (tabla == 7) {
+              FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
+              }
+              
+              if (tabla == 8) {
+              FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
+              }
+              
+              
+             
+              
+              
+              
               
               }
           
@@ -175,31 +241,62 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
                 if (tabla == 1) {
                 FormClientes.campoProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
                 FormClientes.campoNombreProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                this.form1.dispose();
                 }
                 
                 if (tabla == 2) {
               FormUsuarios.txtIdPerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
                 }
                  
                 
                 if (tabla == 3) {
               FormPerfiles.txtIdPerfilPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
                 }
                 
                 if (tabla == 4) {
               FormPerfiles.txtIdActividadPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
                 }
                 
                 if (tabla == 5) {
               LoginForm.txtEmpresa.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              this.form1.dispose();
                 }
+                
+                if (tabla == 6) {
+                    int idCuenta = Integer.parseInt(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+               
+                    Cuenta cuenta = new Cuenta();
+                    cuenta = modelo.getCuenta(idCuenta);
+                    if (cuenta.getTipo() == 0) {
+                      JOptionPane.showMessageDialog(null, "Por favor seleccione una cuenta IMPUTABLE");  
+                    }
+                    else{              
+                    FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                    FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString()); 
+                    this.form1.dispose();
+                }
+        
+              }
+                
+             
+              if (tabla == 7) {
+              FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              this.form1.dispose();
+              }
+              
+              if (tabla == 8) {
+              FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+              this.form1.dispose();
+              }
+                
+                
                
            }
-            form1.dispose();
+            
         }
            
      
@@ -256,6 +353,23 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
                  FormUsuarios.txtIdPerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
                  FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
                  }
+                 
+                 if (tabla == 6) {
+                    FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                    FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString());
+                    //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                 }
+                 
+                 
+                if (tabla == 7) {
+                FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+                //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                }
+
+                if (tabla == 8) {
+                FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
+                //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+                }
                 
                
            }

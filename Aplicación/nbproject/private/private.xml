@@ -3,11 +3,41 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/erqui/Desktop/PracticaProfesional/Prueba1/src/Modelo/ConsultasAuditoria.java</file>
-            <file>file:/C:/Users/erqui/Desktop/PracticaProfesional/Prueba1/src/Controlador/ControladorBackup.java</file>
-            <file>file:/C:/Users/erqui/Desktop/PracticaProfesional/Prueba1/src/Controlador/ControladorAuditoria.java</file>
-            <file>file:/C:/Users/erqui/Desktop/PracticaProfesional/Prueba1/src/Controlador/ControladorCliente.java</file>
-            <file>file:/C:/Users/erqui/Desktop/PracticaProfesional/Prueba1/src/Controlador/ControladorNuevaEmpresa.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Controlador/ControladorAsientos.java</file>
+            <file>file:/C:/Users/Schefer/Desktop/pruebagit/PracticaProfesional/Aplicación/src/Modelo/ConsultasAsientos.java</file>
+=======
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Vista/FormClientes.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/Empresa.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasCliente.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Vista/MenuInicial.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasAuditoria.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/Renglon.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Vista/FormAuditoria.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasLibros.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Vista/FormLibroMayor.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorDesplegable.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasPlanCuentas.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Vista/FormBackup.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/Conexion.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorPlanCuentas.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasDesplegable.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorNuevaEmpresa.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorProvincia.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorNuevaCuenta.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorMenuInicial.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasBackup.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorLibros.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Vista/FormNuevaEmpresa.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorCliente.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasNuevaEmpresa.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorAuditoria.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Reportes/libroMayorSub1.jrxml</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/Cliente.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasUsuario.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Controlador/ControladorLogin.java</file>
+            <file>file:/C:/Repositories/PracticaProfesional/PracticaProfesional/Aplicación/src/Modelo/ConsultasAsientos.java</file>
+>>>>>>> Reportes
         </group>
     </open-files>
 </project-private>

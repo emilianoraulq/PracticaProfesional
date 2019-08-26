@@ -449,6 +449,382 @@ public class ConsultasDesplegable extends Conexion {
         
         
     }
+  
+  
+  
+      public DefaultTableModel llenarTablaPlanDeCuentas() {
+     DefaultTableModel modeloTabla = new DefaultTableModel();
+        
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConnection();
+        
+        try {
+    
+            ps = conexion.prepareStatement("select codigo,nrocuenta,descripcion from plandecuentas where activo = 1 order by codigo asc");
+            rs = ps.executeQuery(); //obtengo los resultados de la consulta
+            
+            modeloTabla.addColumn("Codigo");
+            modeloTabla.addColumn("Nro Cuenta");
+            modeloTabla.addColumn("Descripcion");
+            
+              ResultSetMetaData rsmd = rs.getMetaData();
+            int cantColumnas = rsmd.getColumnCount();//son 3
+
+            while (rs.next()){
+            Object fila [] = new Object[cantColumnas]; // guardo un registro
+            
+            for (int i = 0;i < cantColumnas; i++) {
+                fila[i] = rs.getObject(i+1);
+            }
+            
+            modeloTabla.addRow(fila);
+            
+            }
+            return modeloTabla;  
+            //conexion.close();
+            
+        
+        } catch (Exception ex) {
+        System.err.print("Error" + ex);
+        return modeloTabla;
+        }
+        finally{
+            
+        try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+           
+    } 
+      
+      
+      
+      public DefaultTableModel buscarCuenta(String cuenta) {
+
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Codigo");
+        modeloTabla.addColumn("Nro Cuenta");
+        modeloTabla.addColumn("Descripcion");
+    
+ 
+        String like = "where descripcion like '" +cuenta+ "%' ";
+   
+        
+        Connection conexion = getConnection();
+       
+        try{
+        
+        ps = conexion.prepareStatement("select codigo,nrocuenta,descripcion from plandecuentas " + like);
+        rs = ps.executeQuery();
+        
+          ResultSetMetaData rsmd = rs.getMetaData();
+            int cantColumnas = rsmd.getColumnCount();
+        
+        while (rs.next()) {
+        Object fila [] = new Object[cantColumnas]; // guardo un registro
+            
+            for (int i = 0;i < cantColumnas; i++) {
+                fila[i] = rs.getObject(i+1);
+            }
+            
+            modeloTabla.addRow(fila);
+        }
+        return modeloTabla;
+        
+    
+            
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+         return modeloTabla;
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+        
+        
+        
+        
+    }
+      
+      
+     public Cuenta getCuenta(int idcuenta) {
+ 
+        Connection conexion = getConnection();
+        Cuenta cuenta = new Cuenta();
+       
+        try{
+        
+        ps = conexion.prepareStatement("select * from plandecuentas where nrocuenta = ?");
+        ps.setInt(1,idcuenta);
+        rs = ps.executeQuery();
+       
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int cantColumnas = rsmd.getColumnCount();
+
+           while (rs.next()){
+            Object fila [] = new Object[cantColumnas]; // guardo un registro
+            
+            for (int i = 0;i < cantColumnas; i++) {
+                fila[i] = rs.getObject(i+1);
+               // System.out.println(rs.getObject(5));
+                
+            }
+            
+            cuenta.setCodigo((String) fila[0]);
+            cuenta.setNroCuenta((int) fila[1]);
+            cuenta.setDescripcion((String) fila[2]);
+            cuenta.setTipo((int) fila[3]);
+            cuenta.setNivel((int) fila[4]);
+            cuenta.setInflacion((int) fila[5]);
+            cuenta.setActivo((int) fila[6]);
+    
+            
+            }
+           
+             
+           
+
+          return cuenta;  
+  
+            
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+         return cuenta;
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+     }  
+      
+      
+      
+      
+      
+      
+      
+            public DefaultTableModel llenarTablaSecciones() {
+     DefaultTableModel modeloTabla = new DefaultTableModel();
+        
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConnection();
+        
+        try {
+    
+            ps = conexion.prepareStatement("select idseccion,nombreseccion from secciones");
+            rs = ps.executeQuery(); //obtengo los resultados de la consulta
+            
+            modeloTabla.addColumn("Id");
+            modeloTabla.addColumn("Nombre");
+            
+              ResultSetMetaData rsmd = rs.getMetaData();
+            int cantColumnas = rsmd.getColumnCount();//son 2
+
+            while (rs.next()){
+            Object fila [] = new Object[cantColumnas]; // guardo un registro
+            
+            for (int i = 0;i < cantColumnas; i++) {
+                fila[i] = rs.getObject(i+1);
+            }
+            
+            modeloTabla.addRow(fila);
+            
+            }
+            return modeloTabla;  
+            //conexion.close();
+            
+        
+        } catch (Exception ex) {
+        System.err.print("Error" + ex);
+        return modeloTabla;
+        }
+        finally{
+            
+        try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+           
+    }
+            
+    
+          public DefaultTableModel llenarTablaSucursales() {
+     DefaultTableModel modeloTabla = new DefaultTableModel();
+        
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConnection();
+        
+        try {
+    
+            ps = conexion.prepareStatement("select idsucursal,nombresucursal from sucursales");
+            rs = ps.executeQuery(); //obtengo los resultados de la consulta
+            
+            modeloTabla.addColumn("Id");
+            modeloTabla.addColumn("Nombre");
+            
+              ResultSetMetaData rsmd = rs.getMetaData();
+            int cantColumnas = rsmd.getColumnCount();//son 2
+
+            while (rs.next()){
+            Object fila [] = new Object[cantColumnas]; // guardo un registro
+            
+            for (int i = 0;i < cantColumnas; i++) {
+                fila[i] = rs.getObject(i+1);
+            }
+            
+            modeloTabla.addRow(fila);
+            
+            }
+            return modeloTabla;  
+            //conexion.close();
+            
+        
+        } catch (Exception ex) {
+        System.err.print("Error" + ex);
+        return modeloTabla;
+        }
+        finally{
+            
+        try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+           
+    }
+  
+          
+          
+        public DefaultTableModel buscarSeccion(String seccion) {
+
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Id");
+        modeloTabla.addColumn("Nombre");
+    
+        String like = "where nombreseccion like '" +seccion+ "%' ";
+   
+        
+        Connection conexion = getConnection();
+       
+        try{
+        
+        ps = conexion.prepareStatement("select idseccion,nombreseccion from secciones " + like);
+        rs = ps.executeQuery();
+        
+          ResultSetMetaData rsmd = rs.getMetaData();
+            int cantColumnas = rsmd.getColumnCount();
+        
+        while (rs.next()) {
+        Object fila [] = new Object[cantColumnas]; // guardo un registro
+            
+            for (int i = 0;i < cantColumnas; i++) {
+                fila[i] = rs.getObject(i+1);
+            }
+            
+            modeloTabla.addRow(fila);
+        }
+        return modeloTabla;
+        
+    
+            
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+         return modeloTabla;
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+        
+        
+        
+        
+    }
+        
+        
+        
+        
+        public DefaultTableModel buscarSucursal(String sucursal) {
+
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Id");
+        modeloTabla.addColumn("Nombre");
+    
+        String like = "where nombresucursal like '" +sucursal+ "%' ";
+   
+        
+        Connection conexion = getConnection();
+       
+        try{
+        
+        ps = conexion.prepareStatement("select idsucursal,nombresucursal from sucursales " + like);
+        rs = ps.executeQuery();
+        
+          ResultSetMetaData rsmd = rs.getMetaData();
+            int cantColumnas = rsmd.getColumnCount();
+        
+        while (rs.next()) {
+        Object fila [] = new Object[cantColumnas]; // guardo un registro
+            
+            for (int i = 0;i < cantColumnas; i++) {
+                fila[i] = rs.getObject(i+1);
+            }
+            
+            modeloTabla.addRow(fila);
+        }
+        return modeloTabla;
+        
+    
+            
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+         return modeloTabla;
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+        
+        
+        
+        
+    }
+       
+               
+               
+               
+      
+      
+      
+      
         
         
         
