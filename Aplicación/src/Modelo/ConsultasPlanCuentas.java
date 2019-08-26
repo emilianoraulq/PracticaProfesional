@@ -298,6 +298,46 @@ public class ConsultasPlanCuentas extends Conexion {
     
     
     
+    public boolean modificarCuenta (Cuenta cuenta){
+       Connection conexion = getConnection();
+        
+        try{
+        
+        ps = conexion.prepareStatement("update plandecuentas set codigo = ?, descripcion = ?, tipo = ?, nivel = ?, inflacion = ?, activo = ? where nrocuenta = ?");
+            ps.setString(1, cuenta.getCodigo());
+            ps.setString(2, cuenta.getDescripcion());
+            ps.setInt(3, cuenta.getTipo());
+            ps.setInt(4, cuenta.getNivel());
+            ps.setInt(5, cuenta.getInflacion());
+            ps.setInt(6, cuenta.getActivo());
+            ps.setInt(7, cuenta.getNroCuenta());
+            
+        int resultado = ps.executeUpdate();//ejecuto la actualizacion 
+        
+        if (resultado > 0) {
+        return true;
+        }
+        else {
+          return false;
+        }
+            
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+         return false;
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+     }
+    
+    
+    
+    
     //se usa para borrados logicos
     public boolean desactivarCuenta (int nroCuenta){
        Connection conexion = getConnection();
@@ -466,6 +506,44 @@ public class ConsultasPlanCuentas extends Conexion {
      }
     
     
+    
+        //se usa para buscar si un codigo de balance esta al MODIFICAR una cuenta. (si se usa el anterior y el usuario no cambia su codigo de balance no funciona)
+         public int buscarCodigoBalanceAlModificar(String codigo) {
+         //le paso un codigo de balance y me devuelve el id. Sino esta el codigo me devuelve 0
+              Connection conexion = getConnection();
+       
+        try{
+        
+        ps = conexion.prepareStatement("select nrocuenta from plandecuentas where codigo= ?");
+        ps.setString(1,codigo);
+        rs = ps.executeQuery();
+        int id;
+        
+    
+       if (rs.next()) {
+        id = rs.getInt(1);
+        }
+        else {
+        id = 0;
+        }
+       
+       return id;
+     
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+         return 0;
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+     }
+    
+    
     public DefaultTableModel buscarCuentas(String cuenta) {
 
         DefaultTableModel modeloTabla = new DefaultTableModel();
@@ -477,7 +555,8 @@ public class ConsultasPlanCuentas extends Conexion {
         String like = "";
      
         if (!"".equals(cuenta)) {
-        like = "where descripcion like '" +cuenta+ "%' ";    
+        //like = "where descripcion like '" +cuenta+ "%' ";    
+        like = "where descripcion like '%" +cuenta+ "%' "; 
         }
 
         Connection conexion = getConnection();

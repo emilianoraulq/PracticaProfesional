@@ -94,6 +94,7 @@ public class FormAsientos extends javax.swing.JFrame {
         opcionCierre = new javax.swing.JRadioButton();
         jSeparator2 = new javax.swing.JSeparator();
         botonSalir = new javax.swing.JButton();
+        botonConfirmarAsiento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -532,6 +533,8 @@ public class FormAsientos extends javax.swing.JFrame {
 
         botonSalir.setText("Salir");
 
+        botonConfirmarAsiento.setText("Confirmar Asiento");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -547,7 +550,9 @@ public class FormAsientos extends javax.swing.JFrame {
                         .addGap(168, 168, 168))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(209, 209, 209))))
+                        .addGap(65, 65, 65)
+                        .addComponent(botonConfirmarAsiento)
+                        .addGap(65, 65, 65))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -557,7 +562,9 @@ public class FormAsientos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonSalir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonSalir)
+                    .addComponent(botonConfirmarAsiento))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -601,6 +608,7 @@ public class FormAsientos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton botonCancelar;
+    public javax.swing.JButton botonConfirmarAsiento;
     public javax.swing.JButton botonEliminarRenglon;
     public javax.swing.JButton botonGrabar;
     public javax.swing.JButton botonIniciarCarga;

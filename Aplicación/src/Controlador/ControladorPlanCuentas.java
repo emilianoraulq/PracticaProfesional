@@ -47,6 +47,7 @@ public class ControladorPlanCuentas implements ActionListener, KeyListener{
     form1.botonConfirmar.addActionListener(this);
     
     form1.panelModificarCuenta.setVisible(false);
+    form1.campoCodigo.addKeyListener(this);
     }
     
      public void iniciar(){
@@ -216,6 +217,20 @@ public class ControladorPlanCuentas implements ActionListener, KeyListener{
                 Cuenta cuenta = new Cuenta();
                 cuenta = modelo.getCuenta(Integer.parseInt(form1.tablaCuentas.getValueAt(fila, 3).toString()));
                 
+                //chequeo que la cuenta no tenga hijos porque si los tiene no se puede modificar el codigo de balance ni el tipo de cuenta
+                int cantidad = modelo.cantidadElementosDelNivel(cuenta.getNivel()+1, cuenta.getCodigo());
+               
+                if (cantidad == 0) {
+                 form1.campoCodigo.setEnabled(true);
+                 form1.comboTituloCuenta.setEnabled(true);
+                }
+                else{
+                
+                form1.campoCodigo.setEnabled(false);
+                 form1.comboTituloCuenta.setEnabled(false);
+                
+                }
+                
                 form1.campoCodigo.setText(cuenta.getCodigo());
                 form1.campoDescripcion.setText(cuenta.getDescripcion());
                 form1.campoNivel.setText(String.valueOf(cuenta.getNivel()));
@@ -236,22 +251,8 @@ public class ControladorPlanCuentas implements ActionListener, KeyListener{
                     form1.comboTituloCuenta.setSelectedIndex(0);
                 }
                 
+            
                 
-               /* 
-                form1.campoCodigo.setText(form1.tablaCuentas.getValueAt(fila, 0).toString());
-                form1.campoDescripcion.setText(form1.tablaCuentas.getValueAt(fila, 1).toString());
-                
-                int tipo = (int) form1.tablaCuentas.getValueAt(fila, 2);
-                
-                if (tipo == 0) {
-                  form1.comboTituloCuenta.setSelectedIndex(0);
-                }
-                else{
-                  form1.comboTituloCuenta.setSelectedIndex(1);  
-                }
-                 
-                form1.campoNroCuenta.setText(form1.tablaCuentas.getValueAt(fila, 3).toString());
-                */
                 
             }
              
@@ -265,6 +266,76 @@ public class ControladorPlanCuentas implements ActionListener, KeyListener{
         if (e.getSource() == form1.botonVolver) {
            form1.panelModificarCuenta.setVisible(false); 
         }
+        
+        
+        
+        
+        if (e.getSource() == form1.botonConfirmar) {
+            //controlo que no haya dejado vacio los campos
+            if ("".equals(form1.campoCodigo.getText()) || ("".equals(form1.campoDescripcion.getText()))) {
+                JOptionPane.showMessageDialog(null,"Por favor complete todos los campos");
+            }
+            else{
+                //una vez que los campos estan completos controlo que no haya ingresado un codigo de balance ya existente
+                int nroCuenta = modelo.buscarCodigoBalanceAlModificar(form1.campoCodigo.getText());
+                
+                if ((nroCuenta == Integer.parseInt(form1.campoNroCuenta.getText())) || (nroCuenta == 0)) {
+                    //lo puedo modificar totalmente y establezco los campos de la cuenta o titulo para insertar en la BBDD
+                 Cuenta cuenta = new Cuenta();
+                 cuenta.setCodigo(form1.campoCodigo.getText());
+                 cuenta.setNroCuenta(Integer.parseInt(form1.campoNroCuenta.getText()));
+            
+                    if (form1.comboTituloCuenta.getSelectedIndex() == 0) {
+                        cuenta.setDescripcion(form1.campoDescripcion.getText().toUpperCase());
+                        cuenta.setTipo(0);
+                
+                     }
+                    
+                    if (form1.comboTituloCuenta.getSelectedIndex() == 1) {
+                        cuenta.setDescripcion(form1.campoDescripcion.getText());
+                        cuenta.setTipo(1);
+                
+                    }
+                    
+                    cuenta.setNivel(Integer.parseInt(form1.campoNivel.getText()));
+                    cuenta.setInflacion(0);
+                    cuenta.setActivo(1);
+                    
+                    
+                    //la inserto en la BBDD
+                if(modelo.modificarCuenta(cuenta)) {
+                JOptionPane.showMessageDialog(null, "Cuenta modificada correctamente");
+                form1.tablaCuentas.setModel(modelo.llenarTablaPlanCuentas());
+                form1.panelModificarCuenta.setVisible(false);
+                
+                
+                
+                }
+                else{
+                JOptionPane.showMessageDialog(null, "Error al modificar la cuenta");   
+            
+                }
+                    
+                    
+                }
+                
+  
+                
+                else{
+                 JOptionPane.showMessageDialog(null,"Por favor verifique - El codigo ya existe");  
+                    form1.campoCodigo.requestFocus();
+                
+                
+                
+                
+                
+            }
+            
+            }
+            
+            
+            
+        }
             
         
         
@@ -274,6 +345,18 @@ public class ControladorPlanCuentas implements ActionListener, KeyListener{
 
     @Override
     public void keyTyped(KeyEvent e) {
+        
+        //el campo codigo de balance solo permite numeros, guiones y puntos
+    if (e.getSource() == form1.campoCodigo) {
+      char c = e.getKeyChar();
+        
+     if (((c < '0') || (c > '9')) && (c!= KeyEvent.VK_BACK_SPACE) && (c!=KeyEvent.VK_ENTER) && (c!=KeyEvent.VK_PERIOD) && (c!=KeyEvent.VK_MINUS)) { 
+            form1.campoCodigo.requestFocus();
+             e.consume();
+            
+            
+         }
+      }
         
     }
 

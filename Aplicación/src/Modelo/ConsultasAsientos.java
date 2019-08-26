@@ -546,7 +546,7 @@ public class ConsultasAsientos extends Conexion {
            
            renglon.setImporte(Double.parseDouble(importe.toString()));
            
-           System.out.println("el importe es" + importe);
+          // System.out.println("el importe es" + importe);
             
             }
             
@@ -891,12 +891,12 @@ public class ConsultasAsientos extends Conexion {
         Connection conexion = getConnection();
         try{
          
-        JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/listadoAsientos.jasper"));
+        JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/listadoRenglones.jasper"));
         
         
         Map parametro = new HashMap();
-        parametro.put("id_asiento1", desde);
-        parametro.put("id_asiento2", hasta);
+        parametro.put("idasiento1", desde);
+        parametro.put("idasiento2", hasta);
         parametro.put("nombreEmpresa", Conexion.getNombreBase());
 
         
@@ -919,7 +919,49 @@ public class ConsultasAsientos extends Conexion {
             System.err.println("Error" + ex);
            }
         }
-     }  
+     } 
+      
+      
+      
+      
+     public boolean confirmarAsiento(Asiento asiento){
+        Connection conexion = getConnection();
+        
+                
+        try{
+        
+        ps = conexion.prepareStatement("update asientos set fechacontable = ?, tipoasiento = ?, inflacion = ?, okcarga = ?, registrado = 1 where idasiento = ?");
+        ps.setDate(1, asiento.getFechacontable());
+        ps.setInt(2, asiento.getTipoasiento());
+        ps.setInt(3, asiento.getInflacion());
+        ps.setInt(4, asiento.getOkcarga());
+        ps.setInt(5, asiento.getIdasiento());
+        
+        int resultado = ps.executeUpdate();
+        
+        if (resultado > 0) {
+        return true;
+        }
+        else {
+           
+          return false;
+        }
+            
+        } catch(Exception ex) {
+        System.err.println("Error" + ex);
+         return false;
+        }
+        finally {
+        
+            try{
+            conexion.close();
+            } catch (Exception ex) {
+             System.err.println("Error" + ex);
+            }
+        }
+        
+        
+    } 
          
        
        
