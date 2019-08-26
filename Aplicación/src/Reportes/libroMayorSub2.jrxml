@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="150" pageHeight="150" columnWidth="150" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a7996392-9ccf-4394-a900-56a3ee8555e7">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="300" pageHeight="100" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a7996392-9ccf-4394-a900-56a3ee8555e7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="nrocuenta" class="java.lang.Integer">
+	<parameter name="nrocuentaRenglon" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
+	<parameter name="fecha_desde" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_hasta" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT sum(importe) from renglones inner join asientos on (renglones.nroasiento = asientos.idasiento)
-	inner join plandecuentas on (renglones.idcuenta=plandecuentas.nrocuenta)
-    where renglones.idcuenta=$P{nrocuenta}]]>
+		<![CDATA[SELECT
+sum(Debitos) as totalDebitos,
+sum(Creditos) as totalCreditos,
+sum(sumaresta) as totalSaldo
+
+FROM(
+
+
+
+
+SELECT renglones.idcuenta, renglones.leyenda, renglones.idrenglon, asientos.idasiento, asientos.fechacontable, renglones.debehaber, renglones.importe, renglones.fechavencimiento, renglones.comprobante, renglones.fechaoperacion,
+renglones.nroasiento,
+
+
+ 
+(case renglones.debehaber when 1 then renglones.importe else 0 end) as Creditos,
+(case renglones.debehaber when 0 then renglones.importe else 0 end) as Debitos,
+(case renglones.debehaber when 0 then renglones.importe else renglones.importe*-1 end) as sumaresta
+
+FROM renglones
+INNER JOIN asientos
+ON (renglones.nroasiento = asientos.idasiento)
+	INNER JOIN	plandecuentas
+    ON (renglones.idcuenta=plandecuentas.nrocuenta)
+WHERE renglones.idcuenta=$P{nrocuentaRenglon} and asientos.fechacontable BETWEEN '$P!{fecha_desde}' AND '$P!{fecha_hasta}' and asientos.okcarga=1
+    ORDER BY nrocuenta, fechacontable
+) r]]>
 	</queryString>
-	<field name="sum(importe)" class="java.math.BigDecimal"/>
+	<field name="totalDebitos" class="java.math.BigDecimal"/>
+	<field name="totalCreditos" class="java.math.BigDecimal"/>
+	<field name="totalSaldo" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -25,14 +57,19 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="38" splitType="Stretch">
-			<frame>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="5" width="115" height="24" uuid="c3d25126-7c4e-4ca0-b623-9293094cb8ad"/>
-				<textField>
-					<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="87" height="19" uuid="c9227211-d384-43b5-9828-025e200d618a"/>
-					<textFieldExpression><![CDATA[$F{sum(importe)}]]></textFieldExpression>
-				</textField>
-			</frame>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="15" width="41" height="20" uuid="19690f4e-15bc-47fd-aa4e-e677c9600646"/>
+				<textFieldExpression><![CDATA[$F{totalDebitos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="15" width="40" height="20" uuid="ce6e5140-7d4a-40d0-8f0f-330275da42ab"/>
+				<textFieldExpression><![CDATA[$F{totalCreditos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="15" width="39" height="20" uuid="13d98598-d810-4e29-860a-486cb6834883"/>
+				<textFieldExpression><![CDATA[$F{totalSaldo}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1200" pageHeight="300" columnWidth="1200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b3ec6565-bd49-42c4-8a16-666f120f0aa6">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1300" pageHeight="300" columnWidth="1300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b3ec6565-bd49-42c4-8a16-666f120f0aa6">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -33,7 +33,7 @@ INNER JOIN asientos
 ON (renglones.nroasiento = asientos.idasiento)
 	INNER JOIN	plandecuentas
     ON (renglones.idcuenta=plandecuentas.nrocuenta)
-WHERE renglones.idcuenta=$P{nrocuentaRenglon} and asientos.fechacontable BETWEEN '$P!{fecha_desde}' AND '$P!{fecha_hasta}'
+WHERE renglones.idcuenta=$P{nrocuentaRenglon} and asientos.fechacontable BETWEEN '$P!{fecha_desde}' AND '$P!{fecha_hasta}' and asientos.okcarga=1
     ORDER BY nrocuenta, fechacontable
 ) r]]>
 	</queryString>
@@ -70,55 +70,43 @@ WHERE renglones.idcuenta=$P{nrocuentaRenglon} and asientos.fechacontable BETWEEN
 	<detail>
 		<band height="35" splitType="Stretch">
 			<frame>
-				<reportElement x="0" y="6" width="1200" height="29" uuid="65c76bf0-becd-4c67-b5cd-b2e416bd5c61"/>
+				<reportElement x="0" y="6" width="1042" height="29" uuid="65c76bf0-becd-4c67-b5cd-b2e416bd5c61"/>
 				<textField>
-					<reportElement x="56" y="0" width="58" height="20" uuid="5e39a445-875a-4909-bd5d-7fbbef61aa81"/>
+					<reportElement x="0" y="0" width="58" height="20" uuid="5e39a445-875a-4909-bd5d-7fbbef61aa81"/>
 					<textFieldExpression><![CDATA[$F{idrenglon}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="114" y="0" width="56" height="20" uuid="229420f5-c6a3-4683-a814-00e62a52b0ed"/>
-					<textFieldExpression><![CDATA[$F{idasiento}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="223" y="0" width="55" height="20" uuid="f37e1ac7-a639-4e1e-8574-a9ef17dc830e"/>
+					<reportElement x="143" y="0" width="79" height="20" uuid="f37e1ac7-a639-4e1e-8574-a9ef17dc830e"/>
 					<textFieldExpression><![CDATA[$F{fechacontable}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="357" y="0" width="97" height="20" uuid="56f1293b-1320-4189-a304-9a4c3e3dc070"/>
+					<reportElement x="369" y="0" width="107" height="20" uuid="56f1293b-1320-4189-a304-9a4c3e3dc070"/>
 					<textFieldExpression><![CDATA[$F{comprobante}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="278" y="0" width="52" height="20" uuid="34df1499-e994-4202-b5f6-516ead268b15"/>
+					<reportElement x="254" y="0" width="88" height="20" uuid="34df1499-e994-4202-b5f6-516ead268b15"/>
 					<textFieldExpression><![CDATA[$F{fechavencimiento}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="599" y="0" width="51" height="20" uuid="11bc9b09-c9b1-4293-af14-3607efa04f11"/>
+					<reportElement x="638" y="0" width="51" height="20" uuid="11bc9b09-c9b1-4293-af14-3607efa04f11"/>
 					<textFieldExpression><![CDATA[$F{Debitos}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="663" y="0" width="51" height="20" uuid="d76683a1-1114-4abe-a999-f62ece418ffc"/>
-					<textFieldExpression><![CDATA[$F{Creditos}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="170" y="0" width="53" height="20" uuid="c20a8f8d-599b-4293-9cd6-53158de8a47f"/>
+					<reportElement x="58" y="0" width="53" height="20" uuid="c20a8f8d-599b-4293-9cd6-53158de8a47f"/>
 					<textFieldExpression><![CDATA[$F{nroasiento}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="727" y="0" width="41" height="20" uuid="8d8a143b-09bd-4693-adad-3c9b954a30e6"/>
-					<textFieldExpression><![CDATA[$F{Saldo}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<textField>
-				<reportElement x="540" y="6" width="59" height="20" uuid="f470d5a4-bc28-4aae-962a-fa7c3949edf0"/>
-				<textFieldExpression><![CDATA[$F{debehaber}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="6" width="56" height="20" uuid="5631b290-fc1b-4717-84c2-9eeea49f6e05"/>
-				<textFieldExpression><![CDATA[$F{idcuenta}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="454" y="6" width="86" height="20" uuid="cbeae83a-433f-44fd-9a05-c0a41245e8e1"/>
+				<reportElement x="507" y="6" width="102" height="20" uuid="cbeae83a-433f-44fd-9a05-c0a41245e8e1"/>
 				<textFieldExpression><![CDATA[$F{leyenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="709" y="6" width="51" height="20" uuid="d76683a1-1114-4abe-a999-f62ece418ffc"/>
+				<textFieldExpression><![CDATA[$F{Creditos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="780" y="6" width="41" height="20" uuid="8d8a143b-09bd-4693-adad-3c9b954a30e6"/>
+				<textFieldExpression><![CDATA[$F{Saldo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
