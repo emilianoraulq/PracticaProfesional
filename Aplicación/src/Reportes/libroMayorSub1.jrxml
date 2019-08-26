@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1200" pageHeight="300" columnWidth="1200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b3ec6565-bd49-42c4-8a16-666f120f0aa6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nrocuentaRenglon" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_desde" class="java.sql.Timestamp"/>
+	<parameter name="fecha_hasta" class="java.sql.Timestamp"/>
+	<queryString>
+		<![CDATA[SELECT idcuenta,
+leyenda,idrenglon,idasiento,nroasiento,fechacontable,debehaber,importe,fechavencimiento,
+comprobante,fechaoperacion,Debitos,Creditos,sumaresta,
+sum(sumaresta) over (order by fechaoperacion) as Saldo
+
+FROM(
+
+
+
+
+SELECT renglones.idcuenta, renglones.leyenda, renglones.idrenglon, asientos.idasiento, asientos.fechacontable, renglones.debehaber, renglones.importe, renglones.fechavencimiento, renglones.comprobante, renglones.fechaoperacion,
+renglones.nroasiento,
+
+
+ 
+(case renglones.debehaber when 1 then renglones.importe else '' end) as Creditos,
+(case renglones.debehaber when 0 then renglones.importe else '' end) as Debitos,
+(case renglones.debehaber when 0 then renglones.importe else renglones.importe*-1 end) as sumaresta
+
+FROM renglones
+INNER JOIN asientos
+ON (renglones.nroasiento = asientos.idasiento)
+	INNER JOIN	plandecuentas
+    ON (renglones.idcuenta=plandecuentas.nrocuenta)
+WHERE renglones.idcuenta=$P{nrocuentaRenglon} and asientos.fechacontable BETWEEN '$P!{fecha_desde}' AND '$P!{fecha_hasta}'
+    ORDER BY nrocuenta, fechacontable
+) r]]>
+	</queryString>
+	<field name="idcuenta" class="java.lang.Integer"/>
+	<field name="leyenda" class="java.lang.String"/>
+	<field name="idrenglon" class="java.lang.Integer"/>
+	<field name="idasiento" class="java.lang.Integer"/>
+	<field name="nroasiento" class="java.lang.Integer"/>
+	<field name="fechacontable" class="java.sql.Date"/>
+	<field name="debehaber" class="java.lang.Integer"/>
+	<field name="importe" class="java.math.BigDecimal"/>
+	<field name="fechavencimiento" class="java.sql.Date"/>
+	<field name="comprobante" class="java.lang.String"/>
+	<field name="fechaoperacion" class="java.sql.Date"/>
+	<field name="Debitos" class="java.lang.String"/>
+	<field name="Creditos" class="java.lang.String"/>
+	<field name="sumaresta" class="java.math.BigDecimal"/>
+	<field name="Saldo" class="java.math.BigDecimal"/>
+	<variable name="Saldo" class="java.lang.Float" calculation="Sum">
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="6" width="1200" height="29" uuid="65c76bf0-becd-4c67-b5cd-b2e416bd5c61"/>
+				<textField>
+					<reportElement x="56" y="0" width="58" height="20" uuid="5e39a445-875a-4909-bd5d-7fbbef61aa81"/>
+					<textFieldExpression><![CDATA[$F{idrenglon}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="114" y="0" width="56" height="20" uuid="229420f5-c6a3-4683-a814-00e62a52b0ed"/>
+					<textFieldExpression><![CDATA[$F{idasiento}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="223" y="0" width="55" height="20" uuid="f37e1ac7-a639-4e1e-8574-a9ef17dc830e"/>
+					<textFieldExpression><![CDATA[$F{fechacontable}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="357" y="0" width="97" height="20" uuid="56f1293b-1320-4189-a304-9a4c3e3dc070"/>
+					<textFieldExpression><![CDATA[$F{comprobante}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="278" y="0" width="52" height="20" uuid="34df1499-e994-4202-b5f6-516ead268b15"/>
+					<textFieldExpression><![CDATA[$F{fechavencimiento}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="599" y="0" width="51" height="20" uuid="11bc9b09-c9b1-4293-af14-3607efa04f11"/>
+					<textFieldExpression><![CDATA[$F{Debitos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="663" y="0" width="51" height="20" uuid="d76683a1-1114-4abe-a999-f62ece418ffc"/>
+					<textFieldExpression><![CDATA[$F{Creditos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="170" y="0" width="53" height="20" uuid="c20a8f8d-599b-4293-9cd6-53158de8a47f"/>
+					<textFieldExpression><![CDATA[$F{nroasiento}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="727" y="0" width="41" height="20" uuid="8d8a143b-09bd-4693-adad-3c9b954a30e6"/>
+					<textFieldExpression><![CDATA[$F{Saldo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="540" y="6" width="59" height="20" uuid="f470d5a4-bc28-4aae-962a-fa7c3949edf0"/>
+				<textFieldExpression><![CDATA[$F{debehaber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="6" width="56" height="20" uuid="5631b290-fc1b-4717-84c2-9eeea49f6e05"/>
+				<textFieldExpression><![CDATA[$F{idcuenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="6" width="86" height="20" uuid="cbeae83a-433f-44fd-9a05-c0a41245e8e1"/>
+				<textFieldExpression><![CDATA[$F{leyenda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

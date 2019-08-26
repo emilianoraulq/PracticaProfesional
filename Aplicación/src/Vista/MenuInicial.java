@@ -49,6 +49,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenu7 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -156,6 +157,9 @@ public class MenuInicial extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem12);
 
+        jMenuItem13.setText("Libro Mayor");
+        jMenu7.add(jMenuItem13);
+
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
@@ -220,6 +224,7 @@ public class MenuInicial extends javax.swing.JFrame {
     public javax.swing.JMenuItem jMenuItem10;
     public javax.swing.JMenuItem jMenuItem11;
     public javax.swing.JMenuItem jMenuItem12;
+    public javax.swing.JMenuItem jMenuItem13;
     public javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JMenuItem jMenuItem3;
     public javax.swing.JMenuItem jMenuItem4;

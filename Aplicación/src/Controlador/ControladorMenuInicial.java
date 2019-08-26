@@ -14,6 +14,7 @@ import Modelo.ConsultasAuditoria;
 import Modelo.ConsultasBackup;
 import Modelo.ConsultasCliente;
 import Modelo.ConsultasDesplegable;
+import Modelo.ConsultasLibros;
 import Modelo.ConsultasPerfiles;
 import Modelo.ConsultasPlanCuentas;
 import Modelo.ConsultasUsuario;
@@ -26,6 +27,7 @@ import Vista.FormAsientos;
 import Vista.FormAuditoria;
 import Vista.FormBackup;
 import Vista.FormClientes;
+import Vista.FormLibroMayor;
 import Vista.FormPerfiles;
 import Vista.FormPlanCuentas;
 import Vista.FormSeguridadUsuario;
@@ -59,6 +61,7 @@ public class ControladorMenuInicial implements ActionListener {
         form1.jMenuItem10.addActionListener(this);
         form1.jMenuItem11.addActionListener(this);
         form1.jMenuItem12.addActionListener(this);
+        form1.jMenuItem13.addActionListener(this);
         
         
     }
@@ -272,6 +275,18 @@ public class ControladorMenuInicial implements ActionListener {
              FormAsientos formasientos = new FormAsientos();
              ConsultasAsientos modelo = new ConsultasAsientos();
              ControladorAsientos controlador = new ControladorAsientos(formasientos,modelo,usuario);
+             
+             controlador.iniciar();
+             
+             this.form1.dispose();
+             
+              
+          }
+          
+          if (e.getSource() == form1.jMenuItem13){
+             FormLibroMayor formLibromayor = new FormLibroMayor();
+             ConsultasLibros modelo = new ConsultasLibros();
+             ControladorLibros controlador = new ControladorLibros(formLibromayor,modelo,modeloUsuario,usuario);
              
              controlador.iniciar();
              
