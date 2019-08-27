@@ -65,15 +65,12 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
     form1.botonVolverAtras.addActionListener(this);
     form1.botonCancelar.addActionListener(this);
     form1.botonSalir.addActionListener(this);
-    form1.botonConfirmarAsiento.addActionListener(this);
     
     form1.campoNroCuenta.addKeyListener(this);
     form1.campoSeccion.addKeyListener(this);
     form1.campoSucursal.addKeyListener(this);
     form1.campoImporte.addKeyListener(this);
     form1.campoRetomarAsiento.addKeyListener(this);
-    form1.campoDesde.addKeyListener(this);
-    form1.campoHasta.addKeyListener(this);
     
     form1.campoNroCuenta.addFocusListener(this);
     form1.campoSeccion.addFocusListener(this);
@@ -137,21 +134,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        
-        if (e.getSource() == form1.botonListar) {
-            
-            if ("".equals(form1.campoDesde.getText()) || "".equals(form1.campoHasta.getText())) {
-             JOptionPane.showMessageDialog(null, "Por favor complete DESDE y HASTA");     
-            }
-            else{
-                 int desde = Integer.parseInt(form1.campoDesde.getText());
-                 int hasta = Integer.parseInt(form1.campoHasta.getText());
-            
-                 modelo.listadoAsientos(desde,hasta); 
-            }
-          
-        }
-        
         if (e.getSource() == form1.botonNuevoAsiento) {
             form1.botonRetomarAsiento.setEnabled(false);
             int numAsiento = modelo.cantidadAsientos()+1;
@@ -198,51 +180,13 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
 
                        form1.fechaContable.setEnabled(true);
                        form1.checkInflacion.setEnabled(true);
-                       
+                       form1.panelTipoAsiento.setVisible(true);
                        form1.opcionApertura.setEnabled(true);
                        form1.opcionCierre.setEnabled(true);
-                       form1.opcionNormal.setEnabled(true);                    
+                       form1.opcionNormal.setEnabled(true);
+                       //form1.botonIniciarCarga.setEnabled(true);
 
                        form1.fechaContable.setDate(asiento.getFechacontable());
-                       //si la fecha contable coincide con la del inicio del ejercicio o la del final se muestra el panel tipo asientos sino no
-                       
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        Date fechaCont = null;
-                        Date fechaInicio = null;
-                        Date fechaFin = null;
-
-                        String cadena = sdf.format(form1.fechaContable.getDate());
-                        try {
-                            fechaCont = sdf.parse(cadena);
-                        } catch (ParseException ex) {
-                            Logger.getLogger(ControladorAsientos.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
-                        Date inicio = modelo.getFechaInicioEjercicio();
-                        String fechainicio = sdf.format(inicio);
-                        try {
-                            fechaInicio = sdf.parse(fechainicio);
-
-                             } catch (ParseException ex) {
-                            Logger.getLogger(ControladorAsientos.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        
-                        Date fin = modelo.getFechaFinEjercicio();
-                        String fechafin = sdf.format(fin);
-                        try {
-                            fechaFin = sdf.parse(fechafin);
-
-                             } catch (ParseException ex) {
-                            Logger.getLogger(ControladorAsientos.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        
-                        if ((fechaCont.compareTo(fechaInicio) == 0) || (fechaCont.compareTo(fechaFin) == 0)) {
-                        //System.out.println("coinciden las fechas");
-                        form1.panelTipoAsiento.setVisible(true);     
-                        }
-
-                 
-                       
                        form1.campoAsiento.setText(String.valueOf(asiento.getIdasiento()));
                        if (asiento.getInflacion() == 1) {
                            form1.checkInflacion.setSelected(true);
@@ -379,8 +323,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
                     form1.panelRenglones.setVisible(true);
                     int numRenglon = modelo.cantidadRenglonesdelAsiento(Integer.parseInt(form1.campoAsiento.getText()));
                     form1.campoNroRenglon.setText(String.valueOf(numRenglon+1));
-                    form1.fechaOperacion.setDate(asiento.getFechacontable());
-                    form1.fechaVencimiento.setDate(asiento.getFechacontable());
                     DefaultTableModel modelotabla = new DefaultTableModel();
                     form1.tablaRenglones.setModel(modelotabla);
                 }  
@@ -485,15 +427,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
                     //sumo 1 al nro de renglones
                      int numRenglon = modelo.cantidadRenglonesdelAsiento(Integer.parseInt(form1.campoAsiento.getText()));
                      form1.campoNroRenglon.setText(String.valueOf(numRenglon+1));
-                     
-                     
-                     //le saco la carga ok al asiento ya que el usuario elimino un renglon
-                         Asiento asiento = new Asiento();
-                         asiento = modelo.getAsiento(Integer.parseInt(form1.campoAsiento.getText()));
-                         asiento.setOkcarga(0);
-                         if (modelo.actualizarAsiento(asiento)) {
-                             //carga ok = 0, es decir falso
-                         }
                  
                  
                 }   
@@ -544,7 +477,7 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
                 renglon.setSeccion(Integer.parseInt(form1.campoSeccion.getText()));
                 renglon.setSucursal(Integer.parseInt(form1.campoSucursal.getText()));
                 
-                //SI EL BOTON ELIMINAR ESTA DESACTIVADO ESTOY MODIFICANDO UN RENGLON SINO LO ESTOY INSERTANDO
+                //SI EL BOTON NUEVO ESTA DESACTIVADO ESTOY MODIFICANDO UN RENGLON SINO LO ESTOY INSERTANDO
                 
                 if (!form1.botonEliminarRenglon.isEnabled()) {
                     //actualizo el renglon en la bbdd, lo muestro en la tabla y actualizo el campo DEBE, HABER y DIFERENCIA
@@ -575,9 +508,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
                          limpiarTodasCajasRenglon();
                          int numRenglon = modelo.cantidadRenglonesdelAsiento(Integer.parseInt(form1.campoAsiento.getText()));
                          form1.campoNroRenglon.setText(String.valueOf(numRenglon+1));
-                         
-                         
-                         
                          
                     }
                     
@@ -618,13 +548,7 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
                 }
 
  
-                        //le saco la carga ok al asiento ya que el usuario agrego o modifico un renglon
-                         Asiento asiento = new Asiento();
-                         asiento = modelo.getAsiento(Integer.parseInt(form1.campoAsiento.getText()));
-                         asiento.setOkcarga(0);
-                         if (modelo.actualizarAsiento(asiento)) {
-                             //carga ok = 0, es decir falso
-                         }
+            
             } //cierre control campos vacios
            
 
@@ -679,7 +603,7 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
                 
                 
                 if (modelo.actualizarAsiento(asiento)) {
-                  JOptionPane.showMessageDialog(null, "Asiento cargado correctamente.");
+                  JOptionPane.showMessageDialog(null, "Registro cargado ok.");
                   limpiarTodasCajasRenglon();
                   form1.panelRenglones.setVisible(false);
                   form1.panelTipoAsiento.setVisible(false);
@@ -721,8 +645,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
              form1.opcionNormal.setEnabled(false);
              form1.botonIniciarCarga.setEnabled(false);
              form1.botonVolverAtras.setEnabled(false);
-             
-             limpiarTodasCajasRenglon();
              
         
         }
@@ -769,50 +691,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
             ControladorMenuInicial controlador = new ControladorMenuInicial(menu,usuario,modeloUsuario);
             controlador.iniciar();
             form1.dispose();
-        }
-        
-        
-        if (e.getSource() == form1.botonConfirmarAsiento) {
-            
-            Asiento asiento = new Asiento();
-            asiento = modelo.getAsiento(Integer.parseInt(form1.campoAsiento.getText()));
-            
-            if (asiento.getOkcarga() == 0) {
-               JOptionPane.showMessageDialog(null, "Por favor verifique el asiento, no se puede confirmar");  
-            }
-            else{
-               int chequeo = JOptionPane.showConfirmDialog(null, "ESTA POR CONFIRMAR EL ASIENTO. POR FAVOR CONFIRME"); 
-               
-               if (chequeo == JOptionPane.YES_OPTION) {
-                  if (modelo.confirmarAsiento(asiento)) {
-                    JOptionPane.showMessageDialog(null, "Asiento confirmado."); 
-                    limpiarTodasCajasRenglon();
-                    form1.panelRenglones.setVisible(false);
-                    form1.panelTipoAsiento.setVisible(false);
-                    form1.botonNuevoAsiento.setEnabled(true);
-                    form1.botonRetomarAsiento.setEnabled(true);
-                    form1.fechaContable.setEnabled(false);
-                    form1.checkInflacion.setEnabled(false);
-                    form1.opcionApertura.setEnabled(false);
-                    form1.opcionCierre.setEnabled(false);
-                    form1.opcionNormal.setEnabled(false);
-                    form1.botonIniciarCarga.setEnabled(false);
-                    form1.botonVolverAtras.setEnabled(false);
-              
-                    } 
-             else{
-              JOptionPane.showMessageDialog(null, "Error al confirmar asiento.");    
-            }   
-               }
-                
-             
-              
-              
-            }
-            
-            
-            
-            
         }
             
         
@@ -966,8 +844,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
     @Override
     public void focusGained(FocusEvent e) {
         
-        
-        
     }
 
     @Override
@@ -1000,64 +876,6 @@ public class ControladorAsientos implements ActionListener, KeyListener, FocusLi
             }
                   
             
-        }
-        
-        
-        if (e.getSource() == form1.campoSucursal) {
-            form1.campoSeccion.removeFocusListener(this);
-            
-            if ("".equals(form1.campoSucursal.getText())) {
-              Desplegable desplegable = new Desplegable(form1,true);
-              ConsultasDesplegable modelo = new ConsultasDesplegable();
-
-              ControladorDesplegable controlador = new ControladorDesplegable(desplegable,modelo,8);
-
-              controlador.iniciar();  
-               form1.campoSeccion.addFocusListener(this);
-            }
-            
-            else{
-                if (modelo.buscarSucursal(Integer.parseInt(form1.campoSucursal.getText()))) {
-                 form1.campoSeccion.addFocusListener(this);
-                }
-                else{
-                 Desplegable desplegable = new Desplegable(form1,true);
-                 ConsultasDesplegable modelo = new ConsultasDesplegable();
-
-                 ControladorDesplegable controlador = new ControladorDesplegable(desplegable,modelo,8);
-
-                 controlador.iniciar(); 
-                  form1.campoSeccion.addFocusListener(this);
-                }
-            }
-            
-        }
-        
-        
-        
-        if (e.getSource() == form1.campoSeccion) {
-            if ("".equals(form1.campoSeccion.getText())) {
-              Desplegable desplegable = new Desplegable(form1,true);
-              ConsultasDesplegable modelo = new ConsultasDesplegable();
-
-              ControladorDesplegable controlador = new ControladorDesplegable(desplegable,modelo,7);
-
-              controlador.iniciar();      
-            }
-            
-            else{
-                if (modelo.buscarSeccion(Integer.parseInt(form1.campoSeccion.getText()))) {
-                
-                }
-                else{
-                 Desplegable desplegable = new Desplegable(form1,true);
-                 ConsultasDesplegable modelo = new ConsultasDesplegable();
-
-                 ControladorDesplegable controlador = new ControladorDesplegable(desplegable,modelo,7);
-
-                 controlador.iniciar();    
-                }
-            }
         }
         
         

@@ -462,7 +462,7 @@ public class ConsultasDesplegable extends Conexion {
         
         try {
     
-            ps = conexion.prepareStatement("select codigo,nrocuenta,descripcion from plandecuentas where activo = 1 order by codigo asc");
+            ps = conexion.prepareStatement("select codigo,nrocuenta,descripcion from plandecuentas where tipo = 1 and activo = 1 order by codigo asc");
             rs = ps.executeQuery(); //obtengo los resultados de la consulta
             
             modeloTabla.addColumn("Codigo");
@@ -554,67 +554,6 @@ public class ConsultasDesplegable extends Conexion {
         
         
     }
-      
-      
-     public Cuenta getCuenta(int idcuenta) {
- 
-        Connection conexion = getConnection();
-        Cuenta cuenta = new Cuenta();
-       
-        try{
-        
-        ps = conexion.prepareStatement("select * from plandecuentas where nrocuenta = ?");
-        ps.setInt(1,idcuenta);
-        rs = ps.executeQuery();
-       
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int cantColumnas = rsmd.getColumnCount();
-
-           while (rs.next()){
-            Object fila [] = new Object[cantColumnas]; // guardo un registro
-            
-            for (int i = 0;i < cantColumnas; i++) {
-                fila[i] = rs.getObject(i+1);
-               // System.out.println(rs.getObject(5));
-                
-            }
-            
-            cuenta.setCodigo((String) fila[0]);
-            cuenta.setNroCuenta((int) fila[1]);
-            cuenta.setDescripcion((String) fila[2]);
-            cuenta.setTipo((int) fila[3]);
-            cuenta.setNivel((int) fila[4]);
-            cuenta.setInflacion((int) fila[5]);
-            cuenta.setActivo((int) fila[6]);
-    
-            
-            }
-           
-             
-           
-
-          return cuenta;  
-  
-            
-        } catch(Exception ex) {
-        System.err.println("Error" + ex);
-         return cuenta;
-        }
-        finally {
-        
-            try{
-            conexion.close();
-            } catch (Exception ex) {
-             System.err.println("Error" + ex);
-            }
-        }
-     }  
-      
-      
-      
-      
-      
-      
       
             public DefaultTableModel llenarTablaSecciones() {
      DefaultTableModel modeloTabla = new DefaultTableModel();

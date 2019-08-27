@@ -3,7 +3,6 @@ package Controlador;
 
 import Modelo.Cliente;
 import Modelo.ConsultasDesplegable;
-import Modelo.Cuenta;
 import Vista.Desplegable;
 import Vista.FormAsientos;
 import Vista.FormClientes;
@@ -157,61 +156,47 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
               if (tabla == 1) {
               FormClientes.campoProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               FormClientes.campoNombreProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-              this.form1.dispose();
               }
               
               if (tabla == 2) {
               FormUsuarios.txtIdPerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-              this.form1.dispose();
               }
               
               if (tabla == 3) {
               FormPerfiles.txtIdPerfilPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
               
               if (tabla == 4) {
               FormPerfiles.txtIdActividadPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
               
               if (tabla == 5) {
               LoginForm.txtEmpresa.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
               
               if (tabla == 6) {
-                int idCuenta = Integer.parseInt(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-                //System.out.println(idCuenta);
-                Cuenta cuenta = new Cuenta();
-                cuenta = modelo.getCuenta(idCuenta);
-                if (cuenta.getTipo() == 0) {
-                   JOptionPane.showMessageDialog(null, "Por favor seleccione una cuenta IMPUTABLE");  
-                }
-                else{              
-                 FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-                 FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString()); 
-                 this.form1.dispose();
-                }
-        
+              FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
               
               if (tabla == 7) {
               FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-              this.form1.dispose();
               }
               
               if (tabla == 8) {
               FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-              this.form1.dispose();
               }
               
               
              
-              
+              this.form1.dispose();
               
               
               
@@ -241,62 +226,50 @@ public class ControladorDesplegable implements ActionListener,MouseListener,KeyL
                 if (tabla == 1) {
                 FormClientes.campoProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
                 FormClientes.campoNombreProvincia.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-                this.form1.dispose();
                 }
                 
                 if (tabla == 2) {
               FormUsuarios.txtIdPerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
               FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-              this.form1.dispose();
                 }
                  
                 
                 if (tabla == 3) {
               FormPerfiles.txtIdPerfilPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
                 }
                 
                 if (tabla == 4) {
               FormPerfiles.txtIdActividadPermiso.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
                 }
                 
                 if (tabla == 5) {
               LoginForm.txtEmpresa.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
                 }
                 
                 if (tabla == 6) {
-                    int idCuenta = Integer.parseInt(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-               
-                    Cuenta cuenta = new Cuenta();
-                    cuenta = modelo.getCuenta(idCuenta);
-                    if (cuenta.getTipo() == 0) {
-                      JOptionPane.showMessageDialog(null, "Por favor seleccione una cuenta IMPUTABLE");  
-                    }
-                    else{              
-                    FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
-                    FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString()); 
-                    this.form1.dispose();
-                }
-        
+              FormAsientos.campoNroCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
+              FormAsientos.campoNombreCuenta.setText(form1.tablaDesplegable.getValueAt(fila, 2).toString());
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
                 
              
               if (tabla == 7) {
               FormAsientos.campoSeccion.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
               
               if (tabla == 8) {
               FormAsientos.campoSucursal.setText(form1.tablaDesplegable.getValueAt(fila, 0).toString());
-              this.form1.dispose();
+              //FormUsuarios.txtNombrePerfilUsuario.setText(form1.tablaDesplegable.getValueAt(fila, 1).toString());
               }
                 
                 
                
            }
-            
+            form1.dispose();
         }
            
      
