@@ -1,113 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e080b2a6-7293-404e-89e8-d564bd2c33a3">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="nroasiento" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<queryString>
-		<![CDATA[SELECT
-     renglones.`idrenglon` AS renglones_idrenglon,
-     renglones.`nroasiento` AS renglones_nroasiento,
-     renglones.`idcuenta` AS renglones_idcuenta,
-     renglones.`fechavencimiento` AS renglones_fechavencimiento,
-     renglones.`fechaoperacion` AS renglones_fechaoperacion,
-     renglones.`comprobante` AS renglones_comprobante,
-     renglones.`leyenda` AS renglones_leyenda,
-     renglones.`debehaber` AS renglones_debehaber,
-     renglones.`importe` AS renglones_importe,
-     renglones.`sucursal` AS renglones_sucursal,
-     renglones.`seccion` AS renglones_seccion,
-     plandecuentas.`descripcion` AS plandecuentas_descripcion
-FROM
-     `plandecuentas` plandecuentas INNER JOIN `renglones` renglones ON plandecuentas.`nrocuenta` = renglones.`idcuenta`
-where renglones.`nroasiento` = $P!{nroasiento}]]>
-	</queryString>
-	<field name="renglones_idrenglon" class="java.lang.Integer"/>
-	<field name="renglones_nroasiento" class="java.lang.Integer"/>
-	<field name="renglones_idcuenta" class="java.lang.Integer"/>
-	<field name="renglones_fechavencimiento" class="java.sql.Date"/>
-	<field name="renglones_fechaoperacion" class="java.sql.Date"/>
-	<field name="renglones_comprobante" class="java.lang.String"/>
-	<field name="renglones_leyenda" class="java.lang.String"/>
-	<field name="renglones_debehaber" class="java.lang.Integer"/>
-	<field name="renglones_importe" class="java.math.BigDecimal"/>
-	<field name="renglones_sucursal" class="java.lang.Integer"/>
-	<field name="renglones_seccion" class="java.lang.Integer"/>
-	<field name="plandecuentas_descripcion" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
-		<band height="2" splitType="Stretch"/>
-	</title>
-	<pageHeader>
-		<band splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="4" splitType="Stretch"/>
-	</columnHeader>
-	<detail>
-		<band height="27" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="64" height="20" uuid="6749ae0e-6e51-427e-82d0-d27df9b7cb8c"/>
-				<textFieldExpression><![CDATA[$F{renglones_idrenglon}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="64" y="0" width="36" height="20" uuid="a1ddbb82-9c10-4827-b076-1ba8e82a4fc8"/>
-				<textFieldExpression><![CDATA[$F{renglones_idcuenta}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="0" width="100" height="20" uuid="31a5f291-61cc-42e0-88a9-08ca35d36203"/>
-				<textFieldExpression><![CDATA[$F{plandecuentas_descripcion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="200" y="0" width="54" height="20" uuid="1916d813-7d4e-43ef-b6c9-b51ed5dda097"/>
-				<textFieldExpression><![CDATA[$F{renglones_fechaoperacion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="254" y="0" width="43" height="20" uuid="8b55e83e-7677-4d29-b4c0-fe4b2c8456aa"/>
-				<textFieldExpression><![CDATA[$F{renglones_fechavencimiento}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="297" y="0" width="100" height="20" uuid="45259d90-7cf8-4855-b54e-a1d37722b048"/>
-				<textFieldExpression><![CDATA[$F{renglones_comprobante}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="397" y="0" width="42" height="20" uuid="9a9c64bd-2010-47bd-a575-00e895117c5a"/>
-				<textFieldExpression><![CDATA[$F{renglones_sucursal}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="439" y="0" width="45" height="20" uuid="a4d4bf3b-971a-4988-b5dc-fb9ea8631d50"/>
-				<textFieldExpression><![CDATA[$F{renglones_seccion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="484" y="0" width="162" height="20" uuid="b50a1c69-9917-4543-acd4-071feb650800"/>
-				<textFieldExpression><![CDATA[$F{renglones_leyenda}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="646" y="0" width="73" height="20" uuid="40971e23-b612-4d0a-a984-496912d5cdd7">
-					<printWhenExpression><![CDATA[$F{renglones_debehaber} == 0? true : false]]></printWhenExpression>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{renglones_importe}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="719" y="0" width="83" height="20" uuid="0d4dc747-8295-4424-a684-fad042c69abe">
-					<printWhenExpression><![CDATA[$F{renglones_debehaber} == 1? true : false]]></printWhenExpression>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{renglones_importe}]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="18" splitType="Stretch">
-			<line>
-				<reportElement x="0" y="12" width="802" height="1" uuid="ab68677b-da79-4160-be69-3446e901e5b7"/>
-			</line>
-		</band>
-	</columnFooter>
-	<summary>
-		<band splitType="Stretch"/>
-	</summary>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <background>
+        <band/>
+    </background>
+    <title>
+        <band height="79"/>
+    </title>
+    <pageHeader>
+        <band height="35"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="61"/>
+    </columnHeader>
+    <detail>
+        <band height="125"/>
+    </detail>
+    <columnFooter>
+        <band height="45"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54"/>
+    </pageFooter>
+    <summary>
+        <band height="42"/>
+    </summary>
 </jasperReport>
