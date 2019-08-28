@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8c472b0a-8ebf-44b4-86f8-99e579f4c7ab">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_desde" class="java.sql.Timestamp"/>
+	<parameter name="fecha_hasta" class="java.sql.Timestamp"/>
+	<parameter name="nroAsientoRenglon" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+sum(Debitos) as totalDebitos,
+sum(Creditos) as totalCreditos,
+sum(sumaresta) as totalSaldo
+
+FROM(
+
+
+
+
+SELECT renglones.idcuenta, renglones.leyenda, renglones.idrenglon, asientos.idasiento, asientos.fechacontable, renglones.debehaber, renglones.importe, renglones.fechavencimiento, renglones.comprobante, renglones.fechaoperacion,
+renglones.nroasiento,
+
+
+ 
+(case renglones.debehaber when 1 then renglones.importe else 0 end) as Creditos,
+(case renglones.debehaber when 0 then renglones.importe else 0 end) as Debitos,
+(case renglones.debehaber when 0 then renglones.importe else renglones.importe*-1 end) as sumaresta
+
+FROM renglones
+INNER JOIN asientos
+ON (renglones.nroasiento = asientos.idasiento)
+	INNER JOIN	plandecuentas
+    ON (renglones.idcuenta=plandecuentas.nrocuenta)
+WHERE asientos.fechacontable BETWEEN '$P!{fecha_desde}' AND '$P!{fecha_hasta}' and asientos.okcarga=1
+    ORDER BY nrocuenta, fechacontable
+) r]]>
+	</queryString>
+	<field name="totalDebitos" class="java.math.BigDecimal"/>
+	<field name="totalCreditos" class="java.math.BigDecimal"/>
+	<field name="totalSaldo" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="4" width="61" height="20" uuid="d94d142b-6415-413f-a754-8f267d0612e0"/>
+				<textFieldExpression><![CDATA[$F{totalDebitos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="4" width="58" height="20" uuid="137f9b18-c444-4109-a2d8-8e97093ff301"/>
+				<textFieldExpression><![CDATA[$F{totalCreditos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
