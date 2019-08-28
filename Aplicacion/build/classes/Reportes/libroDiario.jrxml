@@ -3,13 +3,17 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="fecha_desde" class="java.sql.Timestamp"/>
+	<parameter name="fecha_desde" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<parameter name="fecha_hasta" class="java.sql.Timestamp"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\erqui\\Desktop\\Local\\PracticaProfesional\\PracticaProfesional\\Aplicación\\src\\Reportes\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from asientos]]>
+		<![CDATA[select * from asientos where 
+		asientos.okcarga=1 and
+		asientos.fechacontable BETWEEN '$P!{fecha_desde}' AND '$P!{fecha_hasta}']]>
 	</queryString>
 	<field name="idasiento" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -47,13 +51,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="82" splitType="Stretch">
+		<band height="69" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="13" width="100" height="20" uuid="e406129e-69d0-4f5d-b0e8-90dcf946312e"/>
+				<reportElement x="0" y="8" width="100" height="20" uuid="e406129e-69d0-4f5d-b0e8-90dcf946312e"/>
 				<textFieldExpression><![CDATA[$F{idasiento}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="0" y="33" width="46" height="41" uuid="bc829cb1-45e6-45c2-96fa-449e41acabaa"/>
+				<reportElement x="0" y="28" width="46" height="41" uuid="bc829cb1-45e6-45c2-96fa-449e41acabaa"/>
 				<subreportParameter name="nroAsientoRenglon">
 					<subreportParameterExpression><![CDATA[$F{idasiento}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -66,15 +70,24 @@
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "libroDiarioSub1.jasper"]]></subreportExpression>
 			</subreport>
+			<line>
+				<reportElement x="46" y="18" width="509" height="1" uuid="8901a319-1226-479b-aea9-570464bfffe9"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="79" splitType="Stretch">
+		<band height="77" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="19" width="555" height="18" uuid="146ded94-6c2d-4a5b-acc1-fe523bbe83ef"/>
+			</rectangle>
 			<subreport>
-				<reportElement positionType="FixRelativeToBottom" x="403" y="0" width="39" height="37" uuid="ccb97ab6-a289-4f86-84a1-82594a9d442b"/>
+				<reportElement positionType="FixRelativeToBottom" x="404" y="0" width="39" height="37" uuid="ccb97ab6-a289-4f86-84a1-82594a9d442b"/>
 				<subreportParameter name="fecha_desde">
 					<subreportParameterExpression><![CDATA[$P{fecha_desde}]]></subreportParameterExpression>
 				</subreportParameter>

@@ -197,7 +197,7 @@ ORDER BY
 					<subreportParameterExpression><![CDATA[$F{asientos_idasiento}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["D:\\Descargas\\test2\\Aplicacion\\src\\Reportes\\listadoAsientos.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Repositories\\PracticaProfesional\\Aplicacion\\src\\Reportes\\listadoAsientos.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
